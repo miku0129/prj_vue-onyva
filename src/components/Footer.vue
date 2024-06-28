@@ -1,8 +1,10 @@
-<script setup></script>
+<script setup>
+import { footerLabel } from '../assets/asset';
+</script>
 
 <template>
   <div class="footer-container">
-    <p>UFCV Footer</p>
+    <p>{{ footerLabel }}</p>
   </div>
 </template>
 

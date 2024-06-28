@@ -1,14 +1,16 @@
-<script setup></script>
+<script setup>
+import { title, sutTitle, navHome, navGallery } from '../assets/asset';
+</script>
 
 <template>
   <div class="header-container">
     <div>
-      <div class="header-title">UFCV</div>
-      <div>Dynamiser son pfojet professionnel</div>
+      <div class="header-title">{{ title }}</div>
+      <div>{{ sutTitle }}</div>
     </div>
     <nav class="nav-router">
-      <RouterLink to="/">Accueil</RouterLink>
-      <RouterLink to="/gallery">Gallery</RouterLink>
+      <RouterLink to="/">{{ navHome }}</RouterLink>
+      <RouterLink to="/gallery">{{ navGallery }}</RouterLink>
     </nav>
   </div>
 </template>
