@@ -1,5 +1,5 @@
 <script setup>
-import { title, sutTitle, navHome, navGallery } from '../assets/asset';
+import { title, sutTitle, navHome, navGallery } from "../assets/asset";
 </script>
 
 <template>
@@ -12,6 +12,7 @@ import { title, sutTitle, navHome, navGallery } from '../assets/asset';
       <RouterLink to="/">{{ navHome }}</RouterLink>
       <RouterLink to="/gallery">{{ navGallery }}</RouterLink>
     </nav>
+    <BButton variant="danger">Button</BButton>
   </div>
 </template>
 
