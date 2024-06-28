@@ -5,9 +5,19 @@ import RouteHome from "./components/RouteHome.vue";
 </script>
 
 <template>
-  <Header />
-  <RouteHome />
-  <Footer />
+  <div class="display">
+    <Header />
+    <RouteHome />
+    <Footer />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.display {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+</style>

@@ -1,12 +1,13 @@
 <script setup></script>
 
 <template>
-  <h2>Footer</h2>
+  <div class="footer-container">
+    <p>UFCV Footer</p>
+  </div>
 </template>
 
 <style scoped>
-h2 {
-  color: gray;
-  background-color: antiquewhite;
+.footer-container {
+  border-top: 1px solid;
 }
 </style>
