@@ -1,5 +1,5 @@
 <script setup>
-import { footerLabel } from '../assets/asset';
+import { footerLabel } from "../assets/asset";
 </script>
 
 <template>
