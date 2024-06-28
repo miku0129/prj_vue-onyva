@@ -10,6 +10,7 @@ declare module 'vue' {
     BButton: typeof import('bootstrap-vue-next')['BButton']
     BCard: typeof import('bootstrap-vue-next')['BCard']
     BCardText: typeof import('bootstrap-vue-next')['BCardText']
+    BImg: typeof import('bootstrap-vue-next')['BImg']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Gallery: typeof import('./src/components/Gallery.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
@@ -18,5 +19,6 @@ declare module 'vue' {
     RouteHome: typeof import('./src/components/RouteHome.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Student: typeof import('./src/components/Student.vue')['default']
   }
 }

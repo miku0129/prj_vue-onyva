@@ -3,7 +3,7 @@ import { footerLabel } from "../assets/asset";
 </script>
 
 <template>
-  <div class="footer-container">
+  <div class="footer-container container-style">
     <p>{{ footerLabel }}</p>
   </div>
 </template>
