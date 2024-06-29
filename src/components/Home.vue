@@ -1,28 +1,18 @@
 <script setup lang="ts">
 import Student from "./Student.vue";
 import { ref } from "vue";
+import sampleStudentData from "../assets/sample-student-data.ts";
 
-const namelListInit: string[] = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-];
-const nameList = ref(namelListInit);
+const studentlListInit: Student[] = sampleStudentData();
+const studentList = ref(studentlListInit);
 </script>
 
 <template>
   <div class="container-style">
     <h2>Les étudiants dans la formation.</h2>
     <div class="student-profiles-container">
-      <div v-for="studentName in nameList" v-bind:key="studentName">
-        <Student :name="studentName" />
+      <div v-for="student in studentList" v-bind:key="student.name">
+        <Student :student="student"/>
       </div>
     </div>
   </div>
@@ -38,6 +28,6 @@ h2 {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding:10px;
+  padding: 10px;
 }
 </style>
