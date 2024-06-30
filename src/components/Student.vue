@@ -20,6 +20,9 @@ const stData = SampleStudentData();
       <p>
         {{ stData[$route.params.id].myAchievmentInUFCV }}
       </p>
+      <div>
+        <img :src="stData[$route.params.id].signature" />
+      </div>
     </div>
   </div>
 </template>
@@ -47,9 +50,16 @@ const stData = SampleStudentData();
       margin: 0 auto;
     }
   }
-  .student-info-box-sub{
-    font-size: large; 
-    padding: 10px; 
+  .student-info-box-sub {
+    font-size: large;
+    padding: 10px;
+    div {
+      text-align: right;
+      img {
+        width: 300px;
+        text-align: center;
+      }
+    }
   }
   @media (max-width: 400px) {
     flex-direction: column;

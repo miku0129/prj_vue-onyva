@@ -8,4 +8,5 @@ type Student = {
   image: string;
   myGoal?: string;
   myAchievmentInUFCV?: string;
+  signature?: string;
 };
