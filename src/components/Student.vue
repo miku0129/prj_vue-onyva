@@ -48,11 +48,6 @@ const stData = SampleStudentData();
       flex-direction: column;
       gap: 10px;
     }
-    @media (max-width: 400px) {
-      display: flex;
-      flex-direction: column;
-      margin: 0 auto;
-    }
   }
   .student-info-box-sub {
     font-size: large;
@@ -65,8 +60,15 @@ const stData = SampleStudentData();
       }
     }
   }
-  @media (max-width: 400px) {
+}
+@media (max-width: 500px) {
+  .student-info-container {
     flex-direction: column;
+  }
+  .student-info-box-main {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
   }
 }
 </style>
