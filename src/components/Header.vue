@@ -1,32 +1,28 @@
-<script setup>
-import { title, sutTitle, navHome, navGallery } from "../assets/asset";
+<script setup lang="ts">
+import { title, navHome, navGallery } from "../assets/asset";
 </script>
 
 <template>
-  <div class="header-container container-style">
-    <div>
-      <div class="header-title">{{ title }}</div>
-      <div>{{ sutTitle }}</div>
-    </div>
-    <nav class="nav-router">
-      <RouterLink to="/">{{ navHome }}</RouterLink>
-      <RouterLink to="/gallery">{{ navGallery }}</RouterLink>
-    </nav>
+  <div>
+    <BNavbar toggleable="lg" variant="primary" v-b-color-mode="'dark'">
+      <BNavbarBrand class="header-title">{{ title }}</BNavbarBrand>
+      <BNavbarToggle target="nav-collapse" />
+      <BCollapse id="nav-collapse" is-nav>
+        <BNavbarNav>
+          <BNavItem
+            ><RouterLink to="/">{{ navHome }}</RouterLink></BNavItem
+          >
+          <BNavItem
+            ><RouterLink to="/gallery">{{ navGallery }}</RouterLink></BNavItem
+          >
+        </BNavbarNav>
+      </BCollapse>
+    </BNavbar>
   </div>
 </template>
 
 <style scoped>
-.header-container {
-  background-color: gainsboro;
-}
 .header-title {
-  font-size: xxx-large;
-}
-.nav-router {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  gap: 20px;
-  margin-right: 20px;
+  font-size: xx-large;
 }
 </style>
