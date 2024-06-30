@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Student from "./Student.vue";
+import StudentPreview from "./StudentPreview.vue";
 import { ref } from "vue";
 import sampleStudentData from "../assets/sample-student-data.ts";
 
@@ -9,10 +9,10 @@ const studentList = ref(studentlListInit);
 
 <template>
   <div class="container-style">
-    <h2>Les étudiants dans la formation.</h2>
+    <h2>Les étudiants de la formation.</h2>
     <div class="student-profiles-container">
       <div v-for="student in studentList" v-bind:key="student.name">
-        <Student :student="student"/>
+        <StudentPreview :student="student" />
       </div>
     </div>
   </div>
