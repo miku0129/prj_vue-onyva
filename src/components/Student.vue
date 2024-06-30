@@ -6,7 +6,11 @@ const stData = SampleStudentData();
 <template>
   <div class="student-info-container container-style">
     <div class="student-info-box-main">
-      <img :src="stData[$route.params.id].image" />
+      <BImg
+        rounded="circle"
+        alt="Circle image"
+        :src="stData[$route.params.id].image"
+      />
       <div>
         <h2>{{ stData[$route.params.id].name }}</h2>
         <h4>Nationality: {{ stData[$route.params.id].nationality }}</h4>

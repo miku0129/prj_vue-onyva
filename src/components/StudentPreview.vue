@@ -12,7 +12,7 @@ const mainProps = {
 
 <template>
   <div class="student-container">
-    <RouterLink :to="'/student/' + student.id">
+    <RouterLink :to="'/student/' + student.id" class="link">
       <BImg
         v-bind="mainProps"
         rounded="circle"
@@ -27,6 +27,9 @@ const mainProps = {
 <style scoped>
 .student-container {
   text-align: center;
+  .link{
+    text-decoration: none;
+  }
 }
 .student-img {
   object-fit: cover;
