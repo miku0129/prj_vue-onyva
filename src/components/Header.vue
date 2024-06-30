@@ -5,7 +5,11 @@ import { title, navHome, navGallery } from "../assets/asset";
 <template>
   <div>
     <BNavbar toggleable="lg" variant="primary" v-b-color-mode="'dark'">
-      <BNavbarBrand class="header-title">{{ title }}</BNavbarBrand>
+      <BNavbarBrand
+        ><RouterLink to="/" class="header-title">{{
+          title
+        }}</RouterLink></BNavbarBrand
+      >
       <BNavbarToggle target="nav-collapse" />
       <BCollapse id="nav-collapse" is-nav>
         <BNavbarNav>
@@ -24,5 +28,7 @@ import { title, navHome, navGallery } from "../assets/asset";
 <style scoped>
 .header-title {
   font-size: xx-large;
+  color: white;
+  text-decoration: none;
 }
 </style>
