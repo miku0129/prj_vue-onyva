@@ -8,9 +8,9 @@ const studentList = ref(studentlListInit);
 </script>
 
 <template>
-  <div class="container-style">
+  <div class="student-profiles-container container-style">
     <h2>Les étudiants de la formation.</h2>
-    <div class="student-profiles-container">
+    <div class="student-profiles-box">
       <div v-for="student in studentList" v-bind:key="student.name">
         <StudentPreview :student="student" />
       </div>
@@ -19,15 +19,18 @@ const studentList = ref(studentlListInit);
 </template>
 
 <style scoped>
-h2 {
-  color: gray;
-}
 .student-profiles-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px;
+  text-align: center;
+  h2 {
+    color: gray;
+  }
+  .student-profiles-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+  }
 }
 </style>
