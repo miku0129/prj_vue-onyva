@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import StudentPreview from "./StudentPreview.vue";
 import { ref } from "vue";
+import StudentPreview from "./StudentPreview.vue";
+import { subTitle } from "../assets/asset.ts";
 import sampleStudentData from "../assets/sample-student-data.ts";
 
 const studentlListInit: Student[] = sampleStudentData();
@@ -9,7 +10,7 @@ const studentList = ref(studentlListInit);
 
 <template>
   <div class="student-profiles-container container-style">
-    <h2>Les étudiants de la formation.</h2>
+    <h2>{{ subTitle }}</h2>
     <div class="student-profiles-box">
       <div v-for="student in studentList" v-bind:key="student.name">
         <StudentPreview :student="student" />
@@ -23,6 +24,7 @@ const studentList = ref(studentlListInit);
   text-align: center;
   h2 {
     color: gray;
+    margin-bottom: 10px;
   }
   .student-profiles-box {
     display: flex;

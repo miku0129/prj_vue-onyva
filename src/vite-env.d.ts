@@ -6,4 +6,6 @@ type Student = {
   nationality: string;
   whenYouCome: string;
   image: string;
+  myGoal?: string;
+  myAchievmentInUFCV?: string;
 };

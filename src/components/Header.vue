@@ -6,9 +6,10 @@ import { title, navHome, navGallery } from "../assets/asset";
   <div>
     <BNavbar toggleable="lg" variant="primary" v-b-color-mode="'dark'">
       <BNavbarBrand
-        ><RouterLink to="/" class="header-title">{{
-          title
-        }}</RouterLink></BNavbarBrand
+        ><RouterLink to="/" class="header-title"
+          >{{ title }}
+          </RouterLink
+        ></BNavbarBrand
       >
       <BNavbarToggle target="nav-collapse" />
       <BCollapse id="nav-collapse" is-nav>
@@ -27,7 +28,7 @@ import { title, navHome, navGallery } from "../assets/asset";
 
 <style scoped>
 .header-title {
-  font-size: xx-large;
+  font-size: x-large;
   color: white;
   text-decoration: none;
 }

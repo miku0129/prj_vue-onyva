@@ -1,5 +1,5 @@
-export const title = "UFCV"
-export const subTitle = "Dynamiser son pfojet professionnel"
+export const title = "Des membres de notre class"
+export const subTitle = "Nous avons suivi la formation FLE à l'UFCV en 2024."
 export const navHome = "Accueil"
 export const navGallery = "Gallery"
 export const footerLabel = "UFCV Footer"
