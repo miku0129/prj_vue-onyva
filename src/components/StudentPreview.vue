@@ -17,7 +17,7 @@ const mainProps = {
         v-bind="mainProps"
         rounded="circle"
         alt="Circle image"
-        :src="student.image"
+        :src="'https://robohash.org/' + student.id + '/?set=set5&size=180x180'"
       />
       <h5>{{ student.name }}</h5>
     </RouterLink>
@@ -27,7 +27,7 @@ const mainProps = {
 <style scoped>
 .student-container {
   text-align: center;
-  .link{
+  .link {
     text-decoration: none;
   }
 }

@@ -3,10 +3,8 @@
 type Student = {
   id: number;
   name: string;
-  nationality: string;
-  whenYouCome: string;
+  fromWhen: string;
   image: string;
   myGoal?: string;
-  myAchievmentInUFCV?: string;
-  signature?: string;
+  myMethod?: string;
 };

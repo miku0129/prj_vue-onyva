@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import SampleStudentData from "../assets/sample-student-data";
 const stData = SampleStudentData();
 </script>
@@ -9,24 +9,31 @@ const stData = SampleStudentData();
       <BImg
         rounded="circle"
         alt="Circle image"
-        :src="stData[$route.params.id].image"
+        :src="
+          'https://robohash.org/' + $route.params.id + '/?set=set5&size=180x180'
+        "
       />
       <div>
-        <h2>{{ stData[$route.params.id].name }}</h2>
-        <h4>Nationality: {{ stData[$route.params.id].nationality }}</h4>
-        <h4>Depuis: {{ stData[$route.params.id].whenYouCome }}</h4>
+        <div>
+          <p class="i-am">
+            Je m'appelle
+            <span>{{ stData[String(Number($route.params.id) - 1)].name }}</span>
+          </p>
+        </div>
+
+        <p class="i-am">
+          J'étudie le français depuis
+          <span>{{ stData[String(Number($route.params.id) - 1)].fromWhen }}</span>
+        </p>
       </div>
     </div>
     <div class="student-info-box-sub">
       <p>
-        {{ stData[$route.params.id].myGoal }}
+        {{ stData[String(Number($route.params.id) - 1)].myGoal }}
       </p>
       <p>
-        {{ stData[$route.params.id].myAchievmentInUFCV }}
+        {{ stData[String(Number($route.params.id) - 1)].myMethod }}
       </p>
-      <div>
-        <img :src="stData[$route.params.id].signature" />
-      </div>
     </div>
   </div>
 </template>
@@ -34,14 +41,23 @@ const stData = SampleStudentData();
 <style scoped>
 .student-info-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 10px;
   padding: 20px;
   .student-info-box-main {
+    text-align: center;
     img {
       height: 300px;
       width: 300px;
       object-fit: cover;
+    }
+    .i-am {
+      font-size: x-large;
+      color: gray;
+      span {
+        font-size: xx-large;
+        color: black;
+      }
     }
     div {
       display: flex;
@@ -52,16 +68,11 @@ const stData = SampleStudentData();
   .student-info-box-sub {
     font-size: large;
     padding: 10px;
-    div {
-      text-align: right;
-      img {
-        width: 300px;
-        text-align: center;
-      }
-    }
+    max-width: 400px;
+    margin: 0 auto;
   }
 }
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .student-info-container {
     flex-direction: column;
   }
@@ -70,5 +81,5 @@ const stData = SampleStudentData();
     flex-direction: column;
     margin: 0 auto;
   }
-}
+} */
 </style>
