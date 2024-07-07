@@ -23,7 +23,9 @@ const stData = SampleStudentData();
 
         <p class="i-am">
           J'étudie le français depuis
-          <span>{{ stData[String(Number($route.params.id) - 1)].fromWhen }}</span>
+          <span>{{
+            stData[String(Number($route.params.id) - 1)].fromWhen
+          }}</span>
         </p>
       </div>
     </div>
@@ -43,7 +45,6 @@ const stData = SampleStudentData();
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 20px;
   .student-info-box-main {
     text-align: center;
     img {
@@ -62,7 +63,7 @@ const stData = SampleStudentData();
     div {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      padding: 10px;
     }
   }
   .student-info-box-sub {
@@ -72,14 +73,4 @@ const stData = SampleStudentData();
     margin: 0 auto;
   }
 }
-/* @media (max-width: 500px) {
-  .student-info-container {
-    flex-direction: column;
-  }
-  .student-info-box-main {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-  }
-} */
 </style>

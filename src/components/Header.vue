@@ -28,7 +28,7 @@ import { title, navHome, navGallery } from "../assets/asset";
 
 <style scoped>
 .header-title {
-  font-size: x-large;
+  font-size: xx-large;
   color: white;
   text-decoration: none;
 }
