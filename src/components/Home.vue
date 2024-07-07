@@ -23,7 +23,7 @@ const studentList = ref(studentlListInit);
 .student-profiles-container {
   text-align: center;
   h2 {
-    color: gray;
+    color: sandybrown;
     margin-bottom: 10px;
   }
   .student-profiles-box {

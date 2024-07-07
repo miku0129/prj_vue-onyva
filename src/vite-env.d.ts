@@ -3,8 +3,7 @@
 type Student = {
   id: number;
   name: string;
-  fromWhen: string;
-  image: string;
+  fromWhen: number;
   myGoal?: string;
   myMethod?: string;
 };

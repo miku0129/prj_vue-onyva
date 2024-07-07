@@ -29,9 +29,19 @@ const mainProps = {
   text-align: center;
   .link {
     text-decoration: none;
+    h5 {
+      color: gray;
+    }
   }
-}
-.student-img {
-  object-fit: cover;
+  .student-img {
+    object-fit: cover;
+  }
+  &:hover {
+    transform: translate(0px, -10px);
+    transition: all 0.5s ease-in-out;
+    .student-img {
+      background-color: sandybrown;
+    }
+  }
 }
 </style>

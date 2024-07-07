@@ -17,24 +17,22 @@ const stData = SampleStudentData();
         <div>
           <p class="i-am">
             Je m'appelle
-            <span>{{ stData[String(Number($route.params.id) - 1)].name }}</span>
+            <span>{{ stData[Number($route.params.id) - 1].name }}</span>
           </p>
         </div>
 
         <p class="i-am">
           J'étudie le français depuis
-          <span>{{
-            stData[String(Number($route.params.id) - 1)].fromWhen
-          }}</span>
+          <span>{{ stData[Number($route.params.id) - 1].fromWhen }}</span>
         </p>
       </div>
     </div>
     <div class="student-info-box-sub">
       <p>
-        {{ stData[String(Number($route.params.id) - 1)].myGoal }}
+        {{ stData[Number($route.params.id) - 1].myGoal }}
       </p>
       <p>
-        {{ stData[String(Number($route.params.id) - 1)].myMethod }}
+        {{ stData[Number($route.params.id) - 1].myMethod }}
       </p>
     </div>
   </div>
@@ -45,19 +43,22 @@ const stData = SampleStudentData();
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-top: 10px;
   .student-info-box-main {
     text-align: center;
     img {
       height: 300px;
       width: 300px;
       object-fit: cover;
+      background-color: sandybrown;
     }
     .i-am {
       font-size: x-large;
-      color: gray;
+      color: sandybrown;
       span {
         font-size: xx-large;
-        color: black;
+        color: gray;
+        font-weight: 500;
       }
     }
     div {
