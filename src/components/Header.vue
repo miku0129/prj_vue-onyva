@@ -8,6 +8,7 @@ import { title, navHome, navGallery } from "../assets/asset";
       <BNavbarBrand
         ><RouterLink to="/" class="header-title"
           >{{ title }}
+      <img src="../../public/favicon-32x32.png"/>
           </RouterLink
         ></BNavbarBrand
       >

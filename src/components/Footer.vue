@@ -4,7 +4,7 @@ import { footerLabel } from "../assets/asset";
 
 <template>
   <div class="footer-container container-style">
-    <p>{{ footerLabel }}</p>
+    <p>&copy;{{ footerLabel }}</p>
   </div>
 </template>
 
