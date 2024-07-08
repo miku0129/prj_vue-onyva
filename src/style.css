@@ -2,10 +2,12 @@
   padding: 10px;
 }
 #app {
-  font-family: "Cabin Sketch", sans-serif;
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

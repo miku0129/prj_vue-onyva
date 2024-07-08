@@ -18,7 +18,6 @@ declare module 'vue' {
     Gallery: typeof import('./src/components/Gallery.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     Home: typeof import('./src/components/Home.vue')['default']
-    PhotoPreview: typeof import('./src/components/PhotoPreview.vue')['default']
     RouteHome: typeof import('./src/components/RouteHome.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
