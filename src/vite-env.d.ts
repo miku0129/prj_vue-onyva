@@ -2,8 +2,9 @@
 
 type Student = {
   id: number;
+  email: string; 
   name: string;
-  fromWhen: number;
+  fromWhen: string;
   myGoal?: string;
   myMethod?: string;
 };

@@ -1,18 +1,26 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import {ref,onMounted} from 'vue';
+import axios from 'axios';
 import StudentPreview from "./StudentPreview.vue";
-import { subTitle } from "../assets/asset.ts";
-import sampleStudentData from "../assets/sample-student-data.ts";
+import { subTitle, getAllEtudantApi } from "../assets/asset.ts";
 
-const studentlListInit: Student[] = sampleStudentData();
-const studentList = ref(studentlListInit);
+const etudiants = ref();
+const getEtudiants = ()=>{
+  axios.get(`${getAllEtudantApi}`).then((res) =>{
+    etudiants.value = res.data;
+  })  
+}
+//DOM読み込み後に展開する
+onMounted(async()=>{
+  await getEtudiants();
+})
 </script>
 
 <template>
   <div class="student-profiles-container container-style">
     <h2>{{ subTitle }}</h2>
     <div class="student-profiles-box">
-      <div v-for="student in studentList" v-bind:key="student.name">
+      <div v-for="student in etudiants" v-bind:key="student.name">
         <StudentPreview :student="student" />
       </div>
     </div>
