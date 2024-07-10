@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import SampleStudentData from "../assets/sample-student-data";
-const stData = SampleStudentData();
+defineProps<{
+  etudiant: Etudiant[];
+}>();
 </script>
 
 <template>
@@ -18,22 +19,22 @@ const stData = SampleStudentData();
         <div>
           <p class="i-am">
             Je m'appelle
-            <span>{{ stData[Number($route.params.id) - 1].name }}</span>
+            <span>{{ etudiant[Number($route.params.id) - 1].name }}</span>
           </p>
         </div>
 
         <p class="i-am">
           J'étudie le français depuis
-          <span>{{ stData[Number($route.params.id) - 1].fromWhen }}</span>
+          <span>{{ etudiant[Number($route.params.id) - 1].fromWhen }}</span>
         </p>
       </div>
     </div>
     <div class="student-info-box-sub">
       <p>
-        {{ stData[Number($route.params.id) - 1].myGoal }}
+        {{ etudiant[Number($route.params.id) - 1].myGoal }}
       </p>
       <p>
-        {{ stData[Number($route.params.id) - 1].myMethod }}
+        {{ etudiant[Number($route.params.id) - 1].myMethod }}
       </p>
     </div>
   </div>
