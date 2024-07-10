@@ -1,10 +1,10 @@
 /// <reference types="vite/client" />
 
-type Student = {
+type Etudiant = {
   id: number;
   email: string; 
   name: string;
-  fromWhen: string;
+  fromWhen?: string;
   myGoal?: string;
   myMethod?: string;
 };

@@ -14,6 +14,8 @@ declare module 'vue' {
     BNavbarNav: typeof import('bootstrap-vue-next')['BNavbarNav']
     BNavbarToggle: typeof import('bootstrap-vue-next')['BNavbarToggle']
     BNavItem: typeof import('bootstrap-vue-next')['BNavItem']
+    Etudiant: typeof import('./src/components/Etudiant.vue')['default']
+    EtudiantPreview: typeof import('./src/components/EtudiantPreview.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Gallery: typeof import('./src/components/Gallery.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']

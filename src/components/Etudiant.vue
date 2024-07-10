@@ -5,6 +5,7 @@ const stData = SampleStudentData();
 
 <template>
   <div class="student-info-container container-style">
+
     <div class="student-info-box-main">
       <BImg
         rounded="circle"
