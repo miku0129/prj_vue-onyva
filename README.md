@@ -9,8 +9,10 @@
 
 # Future feature 
   * Make be able to user create an account. 
-  * Add authentication
+  * Add authentication. 
   * Make personal page for user.
+  * Improve CI/CD with using Github Actions.
+  * Add test for UI. 
 
 
 
