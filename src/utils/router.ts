@@ -4,15 +4,8 @@ import Home from "../components/Home.vue";
 import Gallery from "../components/Gallery.vue";
 import Etudiant from "../components/Etudiant.vue";
 
-import axios from 'axios';
-import { getAllEtudantApi } from "../assets/asset";
-const getEtudiants = async ()=>{
-  return await axios.get(getAllEtudantApi).then((res) =>{
-    return res.data
-  })  
-}
-const etudiantsData = await getEtudiants()
-console.log(etudiantsData.etudiant)
+import { getAllEtudiants } from "./helper";
+const etudiantsData = await getAllEtudiants(); 
 
 const routes = [
   { path: "/", component: Home },
