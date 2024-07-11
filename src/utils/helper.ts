@@ -6,4 +6,3 @@ export const getAllEtudiants = async () => {
     return res.data;
   });
 };
-

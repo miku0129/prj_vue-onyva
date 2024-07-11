@@ -7,6 +7,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BButton: typeof import('bootstrap-vue-next')['BButton']
     BCollapse: typeof import('bootstrap-vue-next')['BCollapse']
     BImg: typeof import('bootstrap-vue-next')['BImg']
     BNavbar: typeof import('bootstrap-vue-next')['BNavbar']
@@ -15,6 +16,7 @@ declare module 'vue' {
     BNavbarToggle: typeof import('bootstrap-vue-next')['BNavbarToggle']
     BNavItem: typeof import('bootstrap-vue-next')['BNavItem']
     Etudiant: typeof import('./src/components/Etudiant.vue')['default']
+    EtudiantEdit: typeof import('./src/components/EtudiantEdit.vue')['default']
     EtudiantPreview: typeof import('./src/components/EtudiantPreview.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Gallery: typeof import('./src/components/Gallery.vue')['default']

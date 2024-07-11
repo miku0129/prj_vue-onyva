@@ -64,6 +64,9 @@ defineProps<{
         }}
       </p>
     </div>
+    <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">
+      <BButton variant="outline-primary" class="edit-btn">Edit</BButton>
+    </RouterLink>
   </div>
 </template>
 
@@ -100,6 +103,10 @@ defineProps<{
     font-size: large;
     padding: 10px;
     max-width: 400px;
+    margin: 0 auto;
+  }
+  .edit-btn {
+    width: fit-content;
     margin: 0 auto;
   }
 }
