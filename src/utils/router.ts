@@ -14,7 +14,7 @@ const routes = [
   { path: "/gallery/", component: Gallery },
   { path: "/etudiant/create/", component: EtudiantCreate },
   { path: "/etudiant/:id/", component: Etudiant , props: etudiantsData},
-  { path: "/etudiant/:id/edit", component: EtudiantEdit , props: etudiantsData},
+  { path: "/etudiant/:id/edit", component: EtudiantEdit },
 ];
 
 const router = createRouter({

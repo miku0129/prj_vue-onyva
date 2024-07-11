@@ -60,24 +60,55 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, nextTick } from "vue";
+import { ref, reactive, nextTick, onMounted } from "vue";
+import { useRoute } from "vue-router";
+import axios from "axios";
+import router from "../utils/router";
+import { getAllEtudantApi } from "../assets/asset";
 
-//tex
-// const myGoal = ref();
-// const myMethod = ref();
+const route = useRoute();
+const id = route.params.id;
 
 const form = reactive({
-  email: "",
   name: "",
+  email: "",
   fromWhen: "",
   myGoal: "",
   myMethod: "",
 });
+
+const prefetch = async () => {
+  try {
+    const res = await axios.get(getAllEtudantApi);
+    const etd = res.data.etudiant.find((e: Etudiant) => e.id === Number(id));
+
+    form.name = etd.name;
+    form.email = etd.email;
+    form.fromWhen = etd.fromWhen;
+    form.myGoal = etd.myGoal;
+    form.myMethod = etd.myMethod;
+  } catch (e) {
+    alert(e);
+  }
+};
+
+onMounted(() => {
+  prefetch();
+});
+
 const show = ref(true);
 
-const onSubmit = (event: Event) => {
+const onSubmit = async (event: Event) => {
   event.preventDefault();
-  alert(JSON.stringify(form));
+  try {
+    await axios.put(`https://app.msano.ovh/www/api/etudiant/edit/${id}`, form);
+    alert(JSON.stringify(form));
+    router.push({ path: `/etudiant/${id}` }).then(() => {
+      router.go(0);
+    });
+  } catch (e) {
+    alert(e);
+  }
 };
 
 const onReset = (event: Event) => {

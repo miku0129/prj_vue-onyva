@@ -69,8 +69,8 @@ import { createAEtudiantApi } from "../assets/asset";
 // const myMethod = ref();
 
 const form = reactive({
-  email: "",
   name: "",
+  email: "",
   fromWhen: "",
   myGoal: "",
   myMethod: "",

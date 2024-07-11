@@ -80,10 +80,10 @@ defineProps<{
                 await axios.delete(
                   `https://app.msano.ovh/www/api/etudiant/delete/${$route.params.id}`
                 );
+                router.go(-1);
               } catch (e) {
                 console.log(e);
               }
-              router.go(-1);
             }
           "
           >Effacer</BButton
