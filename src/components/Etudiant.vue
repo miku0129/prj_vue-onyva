@@ -72,7 +72,7 @@ defineProps<{
       </RouterLink>
       <div>
         <BButton
-          variant="danger"
+          variant="outline-danger"
           class="edit-btn"
           @click="
             async () => {
@@ -135,6 +135,7 @@ defineProps<{
 }
 .btn-group {
   display: flex;
+  justify-content: center;
   gap: 10px;
 }
 </style>
