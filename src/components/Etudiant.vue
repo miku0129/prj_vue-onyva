@@ -6,7 +6,6 @@ defineProps<{
 
 <template>
   <div class="student-info-container container-style">
-
     <div class="student-info-box-main">
       <BImg
         rounded="circle"
@@ -19,22 +18,50 @@ defineProps<{
         <div>
           <p class="i-am">
             Je m'appelle
-            <span>{{ etudiant[Number($route.params.id) - 1].name }}</span>
+            <span>{{
+              (() => {
+                const etd = etudiant.filter((etd) => {
+                  return etd.id === Number($route.params.id);
+                });
+                return etd[0].name;
+              })()
+            }}</span>
           </p>
         </div>
 
         <p class="i-am">
           J'étudie le français depuis
-          <span>{{ etudiant[Number($route.params.id) - 1].fromWhen }}</span>
+          <span>{{
+            (() => {
+              const etd = etudiant.filter((etd) => {
+                return etd.id === Number($route.params.id);
+              });
+              return etd[0].fromWhen;
+            })()
+          }}</span>
         </p>
       </div>
     </div>
     <div class="student-info-box-sub">
       <p>
-        {{ etudiant[Number($route.params.id) - 1].myGoal }}
+        {{
+          (() => {
+            const etd = etudiant.filter((etd) => {
+              return etd.id === Number($route.params.id);
+            });
+            return etd[0].myGoal;
+          })()
+        }}
       </p>
       <p>
-        {{ etudiant[Number($route.params.id) - 1].myMethod }}
+        {{
+          (() => {
+            const etd = etudiant.filter((etd) => {
+              return etd.id === Number($route.params.id);
+            });
+            return etd[0].myMethod;
+          })()
+        }}
       </p>
     </div>
   </div>

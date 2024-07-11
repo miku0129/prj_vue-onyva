@@ -12,6 +12,7 @@ const getEtudiants = async ()=>{
   })  
 }
 const etudiantsData = await getEtudiants()
+console.log(etudiantsData.etudiant)
 
 const routes = [
   { path: "/", component: Home },

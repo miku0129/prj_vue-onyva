@@ -23,8 +23,6 @@ declare module 'vue' {
     RouteHome: typeof import('./src/components/RouteHome.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Student: typeof import('./src/components/Student.vue')['default']
-    StudentPreview: typeof import('./src/components/StudentPreview.vue')['default']
   }
   export interface ComponentCustomProperties {
     vBColorMode: typeof import('bootstrap-vue-next')['vBColorMode']
