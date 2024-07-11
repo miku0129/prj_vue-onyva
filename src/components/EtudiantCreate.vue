@@ -61,6 +61,8 @@
 
 <script setup lang="ts">
 import { ref, reactive, nextTick } from "vue";
+import axios from "axios";
+import { createAEtudiantApi } from "../assets/asset";
 
 //tex
 // const myGoal = ref();
@@ -75,9 +77,27 @@ const form = reactive({
 });
 const show = ref(true);
 
-const onSubmit = (event: Event) => {
+const onSubmit = async (event: Event) => {
   event.preventDefault();
-  alert(JSON.stringify(form));
+  try {
+    await axios.post(createAEtudiantApi, form);
+    // alert(JSON.stringify(form));
+    alert("L'exécution a réussi.");
+
+    form.name = "";
+    form.email = "";
+    form.fromWhen = "";
+    form.myGoal = "";
+    form.myMethod = "";
+
+    // Trick to reset/clear native browser form validation state
+    show.value = false;
+    nextTick(() => {
+      show.value = true;
+    });
+  } catch (e) {
+    alert(e);
+  }
 };
 
 const onReset = (event: Event) => {

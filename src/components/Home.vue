@@ -19,6 +19,15 @@ onMounted(async () => {
 <template>
   <div class="etudiant-profiles-container container-style">
     <h2>{{ subTitle }}</h2>
+
+    <div>
+      <RouterLink :to="'/etudiant/create'" class="link">
+        <BButton variant="outline-primary" class="edit-btn"
+          >Ajouter un profil</BButton
+        >
+      </RouterLink>
+    </div>
+
     <div class="etudiant-profiles-box">
       <div v-for="etudiant in etudiants" v-bind:key="etudiant.id">
         <EtudiantPreview :etudiant="etudiant" />
