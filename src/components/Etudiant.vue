@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import router from "../utils/router";
+import axios from "axios";
 defineProps<{
   etudiant: Etudiant[];
 }>();
@@ -64,9 +66,30 @@ defineProps<{
         }}
       </p>
     </div>
-    <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">
-      <BButton variant="outline-primary" class="edit-btn">Edit</BButton>
-    </RouterLink>
+    <div class="btn-group">
+      <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">
+        <BButton variant="outline-primary" class="edit-btn">Edit</BButton>
+      </RouterLink>
+      <div>
+        <BButton
+          variant="danger"
+          class="edit-btn"
+          @click="
+            async () => {
+              try {
+                await axios.delete(
+                  `https://app.msano.ovh/www/api/etudiant/delete/${$route.params.id}`
+                );
+              } catch (e) {
+                console.log(e);
+              }
+              router.go(-1);
+            }
+          "
+          >Effacer</BButton
+        >
+      </div>
+    </div>
   </div>
 </template>
 
@@ -109,5 +132,9 @@ defineProps<{
     width: fit-content;
     margin: 0 auto;
   }
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
 }
 </style>
