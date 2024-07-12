@@ -1,31 +1,31 @@
 <script setup lang="ts">
 defineProps<{
-  student: Student;
+  etudiant: Etudiant;
 }>();
 
 const mainProps = {
   width: 150,
   height: 150,
-  class: "m1 student-img",
+  class: "m1 etudiant-img",
 };
 </script>
 
 <template>
-  <div class="student-container">
-    <RouterLink :to="'/student/' + student.id" class="link">
+  <div class="etudiant-container">
+    <RouterLink :to="'/etudiant/' + etudiant.id" class="link" >
       <BImg
         v-bind="mainProps"
         rounded="circle"
         alt="Circle image"
-        :src="'https://robohash.org/' + student.id + '/?set=set5&size=180x180'"
+        :src="'https://robohash.org/' + etudiant.id + '/?set=set5&size=180x180'"
       />
-      <h5>{{ student.name }}</h5>
+      <h5>{{ etudiant.name }}</h5>
     </RouterLink>
   </div>
 </template>
 
 <style scoped>
-.student-container {
+.etudiant-container {
   text-align: center;
   .link {
     text-decoration: none;
@@ -33,13 +33,13 @@ const mainProps = {
       color: gray;
     }
   }
-  .student-img {
+  .etudiant-img {
     object-fit: cover;
   }
   &:hover {
     transform: translate(0px, -10px);
     transition: all 0.5s ease-in-out;
-    .student-img {
+    .etudiant-img {
       background-color: sandybrown;
     }
   }

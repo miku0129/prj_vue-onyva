@@ -1,32 +1,49 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import StudentPreview from "./StudentPreview.vue";
-import { subTitle } from "../assets/asset.ts";
-import sampleStudentData from "../assets/sample-student-data.ts";
+import { ref, onMounted } from "vue";
+import axios from "axios";
+import EtudiantPreview from "./EtudiantPreview.vue";
+import { subTitle, getAllEtudantApi } from "../assets/asset.ts";
 
-const studentlListInit: Student[] = sampleStudentData();
-const studentList = ref(studentlListInit);
+const etudiants = ref();
+const getEtudiants = () => {
+  axios.get(`${getAllEtudantApi}`).then((res) => {
+    etudiants.value = res.data.etudiant;
+  });
+};
+//DOM読み込み後に展開する
+onMounted(async () => {
+  await getEtudiants();
+});
 </script>
 
 <template>
-  <div class="student-profiles-container container-style">
+  <div class="etudiant-profiles-container container-style">
     <h2>{{ subTitle }}</h2>
-    <div class="student-profiles-box">
-      <div v-for="student in studentList" v-bind:key="student.name">
-        <StudentPreview :student="student" />
+
+    <div>
+      <RouterLink :to="'/etudiant/create'" class="link">
+        <BButton variant="outline-primary" class="edit-btn"
+          >Ajouter un profil</BButton
+        >
+      </RouterLink>
+    </div>
+
+    <div class="etudiant-profiles-box">
+      <div v-for="etudiant in etudiants" v-bind:key="etudiant.id">
+        <EtudiantPreview :etudiant="etudiant" />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.student-profiles-container {
+.etudiant-profiles-container {
   text-align: center;
   h2 {
     color: sandybrown;
     margin-bottom: 10px;
   }
-  .student-profiles-box {
+  .etudiant-profiles-box {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
