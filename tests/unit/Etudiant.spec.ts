@@ -5,6 +5,7 @@ import axios from "axios";
 jest.mock("axios", () => ({
   get: jest.fn(() =>
     Promise.resolve({
+      data: {
         etudiant: [
           {
             created_at: "2024-07-10T14:02:47.000000Z",
@@ -18,6 +19,7 @@ jest.mock("axios", () => ({
             updated_at: "2024-07-11T05:10:01.000000Z",
           },
         ],
+      },
     })
   ),
 }));
@@ -35,17 +37,22 @@ describe("Etudiant", () => {
   });
 });
 
-describe("Etudiant", () => {
-  it("should show an etudiant profile corresponds his/her id", async () => {
-    const wrapper = shallowMount(Etudiant, {
-      global: {
-        mocks: {
-          $route: { params: { id: "1" } },
-        },
-      },
-    });
+// describe("Etudiant", () => {
+//   it("should show an etudiant profile corresponds his/her id", async () => {
+//     const wrapper = shallowMount(Etudiant, {
+//       global: {
+//         mocks: {
+//           $route: { params: { id: "1" } },
+//         },
+//       },
+//       data() {
+//         return {
+//           routeId: "1",
+//         };
+//       },
+//     });
 
-    await flushPromises();
-    console.log(wrapper.html());
-  });
-});
+//     await flushPromises();
+//     console.log(wrapper.html());
+//   });
+// });

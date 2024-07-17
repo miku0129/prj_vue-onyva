@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, toRaw } from "vue";
 import { useRoute } from "vue-router";
 import router from "../utils/router";
 import { getAllEtudiants } from "../utils/helper";
@@ -8,48 +8,30 @@ type DataType = { etudiants: Etudiant[] };
 let data: DataType = reactive({ etudiants: [] });
 
 const route = useRoute();
+const routeId = route ? route.params.id : "";
+console.log("routeId", routeId);
 const etdProf = reactive({
   name: "",
 });
 const getStudentProfile = async () => {
-  // const { etudiant } = await getAllEtudiants();
-  console.log("??", await getAllEtudiants())
-  // data.etudiants = etudiant;
+  const { etudiant } = await getAllEtudiants();
+  data.etudiants = etudiant;
 
-  // const etd = data.etudiants.filter((etd) => {
-  //   if (route) {
-  //     return etd.id === Number(route.params.id);
-  //   }
-  // });
-  // if (JSON.stringify(etd) !== JSON.stringify([])) {
-  //   console.log("etd!", etd);
-  //   etdProf.name = etd[0].name;
-  // } else {
-  //   console.log("etd", etd);
-  // }
+  const etd = data.etudiants.filter((etd) => {
+    const etdObj = toRaw(etd);
+    return etdObj.id === Number(routeId);
+  });
+
+  const etdObj = toRaw(etd[0]);
+  if (JSON.stringify(etdObj) !== JSON.stringify({})) {
+    etdProf.name = etdObj.name;
+  }
+  console.log("etdProf", etdProf);
 };
 
-// const getStudentProfile = (arg: string) => {
-//   const etd = data.etudiants.filter((etd) => {
-//     if (route) {
-//       return etd.id === Number(route.params.id);
-//     }
-//   });
-//   console.log("etd", etd)
 
-//   if (arg === "name") {
-//     return etd[0].name;
-//   } else if (arg === "fromWhen") {
-//     return etd[0].fromWhen;
-//   } else if (arg === "myGoal") {
-//     return etd[0].myGoal;
-//   } else if (arg === "myMethod") {
-//     return etd[0].myMethod;
-//   }
-// };
-
-onMounted(async () => {
-  await getStudentProfile();
+onMounted(() => {
+  getStudentProfile();
 });
 </script>
 
