@@ -13,5 +13,6 @@ module.exports = {
       "^.+\\.(t|j)s?$": "babel-jest",
       "^.+\\.vue$": "@vue/vue3-jest",
     },
+    setupFilesAfterEnv: ['./tests/router-mock-setup.js'],
   };
   

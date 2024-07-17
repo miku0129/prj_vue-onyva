@@ -8,8 +8,8 @@ type DataType = { etudiants: Etudiant[] };
 let data: DataType = reactive({ etudiants: [] });
 
 const route = useRoute();
-// console.log("route", route.params.id);
 const routeId = route ? route.params.id : "";
+console.log("routeid", routeId)
 const etdProf = reactive({
   name: "",
 });
