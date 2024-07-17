@@ -9,7 +9,7 @@ let data: DataType = reactive({ etudiants: [] });
 
 const route = useRoute();
 const routeId = route ? route.params.id : "";
-console.log("routeid", routeId)
+console.log("routeid", routeId);
 const etdProf = reactive({
   name: "",
 });
@@ -24,12 +24,12 @@ const getStudentProfile = async () => {
   });
 
   const etdObj = toRaw(etd[0]);
-  console.log("?", etdObj);
-  // if (JSON.stringify(etdObj) !== JSON.stringify({})) {
   if (etdObj) {
     etdProf.name = etdObj.name;
+    etdProf.fromWhen = etdObj.fromWhen;
+    etdProf.myGoal = etdObj.myGoal;
+    etdProf.myMethod = etdProf.myMethod;
   }
-  console.log("etdProf", etdProf);
 };
 
 onMounted(() => {
@@ -51,41 +51,23 @@ onMounted(() => {
         <div>
           <p class="i-am">
             Je m'appelle
-            <span>{{ etdProf.name }}</span>
+            <span class="jest-name-verify">{{ etdProf.name }}</span>
           </p>
         </div>
 
-        <!-- <p class="i-am">
+        <p class="i-am">
           J'étudie le français depuis
-          <span>{{
-            (() => {
-              if (JSON.stringify(data.etudiants) !== JSON.stringify([])) {
-                return getStudentProfile("fromWhen");
-              }
-            })()
-          }}</span>
-        </p> -->
+          <span>{{ etdProf.fromWhen }}</span>
+        </p>
       </div>
     </div>
     <div class="student-info-box-sub">
-      <!-- <p>
-        {{
-          (() => {
-            if (JSON.stringify(data.etudiants) !== JSON.stringify([])) {
-              return getStudentProfile("myGoal");
-            }
-          })()
-        }}
+      <p>
+        {{ etdProf.myGoal }}
       </p>
       <p>
-        {{
-          (() => {
-            if (JSON.stringify(data.etudiants) !== JSON.stringify([])) {
-              return getStudentProfile("myMethod");
-            }
-          })()
-        }}
-      </p> -->
+        {{ etdProf.myMethod }}
+      </p>
     </div>
     <div class="btn-group">
       <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">

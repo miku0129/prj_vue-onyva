@@ -27,23 +27,22 @@ jest.mock("axios", () => ({
 }));
 
 describe("Etudiant", () => {
-  const router = createRouterMock({
-  });
+  const router = createRouterMock({});
   beforeEach(() => {
     // inject it globally to ensure `useRoute()`, `$route`, etc work
     // properly and give you access to test specific functions
     injectRouterMock(router);
   });
-  // it("is a Vue instance", () => {
-  //   const wrapper = shallowMount(Etudiant, {
-  //     global: {
-  //       mocks: {
-  //         $route: { params: { id: "" } },
-  //       },
-  //     },
-  //   });
-  //   expect(wrapper.exists()).toBe(true);
-  // });
+  it("is a Vue instance", () => {
+    const wrapper = shallowMount(Etudiant, {
+      global: {
+        mocks: {
+          $route: { params: { id: "" } },
+        },
+      },
+    });
+    expect(wrapper.exists()).toBe(true);
+  });
 
   it("should have a router", () => {
     const wrapper = mount(Etudiant);
@@ -51,29 +50,27 @@ describe("Etudiant", () => {
   });
 
   it("should show an etudiant profile corresponds his/her id", async () => {
-    // const MockUseRoute = useRoute as jest.Mock<typeof MockUseRoute>;
-    // console.log("???", typeof MockUseRoute.mockImplementation);
-    // MockUseRoute.mockImplementation(() => ({
-    //   params: {
-    //     id: 1,
-    //   },
-    // }));
-    // (useRoute as jest.Mock).mockImplementationOnce(() => ({
-    // }));
-
-    router.currentRoute.value.params = {id : "1"}
+    router.currentRoute.value.params = { id: "1" };
     const wrapper = mount(Etudiant, {
       global: {
-        mocks: {
-          $route: { params: { id: "1" } },
-        },
-        plugins:[router]
+        plugins: [router],
       },
     });
-    // const router = getRouter()
-
-
     await flushPromises();
-    console.log(wrapper.html());
+    expect(wrapper.find('[class="jest-name-verify"]').text()).toBe("Anwal");
   });
+
+  // it("should show an etudiant profile corresponds his/her id", async () => {
+  //   router.currentRoute.value.params = {id : "1"}
+  //   const wrapper = mount(Etudiant, {
+  //     global: {
+  //       mocks: {
+  //         $route: { params: { id: "1" } },
+  //       },
+  //       plugins:[router]
+  //     },
+  //   });
+  //   await flushPromises();
+  //   console.log(wrapper.html());
+  // });
 });
