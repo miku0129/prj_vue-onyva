@@ -12,8 +12,8 @@ const getData = async () => {
   console.log("etudiant", etudiant);
 };
 
-onMounted(() => {
-  getData();
+onMounted(async () => {
+  await getData();
 });
 </script>
 
