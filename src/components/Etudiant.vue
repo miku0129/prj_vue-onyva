@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, reactive } from "vue";
+import { useRoute } from "vue-router";
 import router from "../utils/router";
 import { getAllEtudiants } from "../utils/helper";
 
@@ -9,7 +10,24 @@ let data: DataType = reactive({ etudiants: [] });
 const getData = async () => {
   const { etudiant } = await getAllEtudiants();
   data.etudiants = etudiant;
-  console.log("etudiant", etudiant);
+};
+
+const route = useRoute();
+const getStudentProfile = (arg: string) => {
+  const etd = data.etudiants.filter((etd) => {
+    if (route) {
+      return etd.id === Number(route.params.id);
+    }
+  });
+  if (arg === "name") {
+    return etd[0].name;
+  } else if (arg === "fromWhen") {
+    return etd[0].fromWhen;
+  } else if (arg === "myGoal") {
+    return etd[0].myGoal;
+  } else if (arg === "myMethod") {
+    return etd[0].myMethod;
+  }
 };
 
 onMounted(async () => {
@@ -34,10 +52,7 @@ onMounted(async () => {
             <span>{{
               (() => {
                 if (JSON.stringify(data.etudiants) !== JSON.stringify([])) {
-                  const etd = data.etudiants.filter((etd) => {
-                    return etd.id === Number($route.params.id);
-                  });
-                  return etd[0].name;
+                  return getStudentProfile("name");
                 }
               })()
             }}</span>
@@ -49,10 +64,7 @@ onMounted(async () => {
           <span>{{
             (() => {
               if (JSON.stringify(data.etudiants) !== JSON.stringify([])) {
-                const etd = data.etudiants.filter((etd) => {
-                  return etd.id === Number($route.params.id);
-                });
-                return etd[0].fromWhen;
+                return getStudentProfile("fromWhen");
               }
             })()
           }}</span>
@@ -64,10 +76,7 @@ onMounted(async () => {
         {{
           (() => {
             if (JSON.stringify(data.etudiants) !== JSON.stringify([])) {
-              const etd = data.etudiants.filter((etd) => {
-                return etd.id === Number($route.params.id);
-              });
-              return etd[0].myGoal;
+              return getStudentProfile("myGoal");
             }
           })()
         }}
@@ -76,10 +85,7 @@ onMounted(async () => {
         {{
           (() => {
             if (JSON.stringify(data.etudiants) !== JSON.stringify([])) {
-              const etd = data.etudiants.filter((etd) => {
-                return etd.id === Number($route.params.id);
-              });
-              return etd[0].myMethod;
+              return getStudentProfile("myMethod");
             }
           })()
         }}
