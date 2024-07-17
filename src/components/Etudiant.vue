@@ -8,11 +8,12 @@ type DataType = { etudiants: Etudiant[] };
 let data: DataType = reactive({ etudiants: [] });
 
 const route = useRoute();
+// console.log("route", route.params.id);
 const routeId = route ? route.params.id : "";
-console.log("routeId", routeId);
 const etdProf = reactive({
   name: "",
 });
+
 const getStudentProfile = async () => {
   const { etudiant } = await getAllEtudiants();
   data.etudiants = etudiant;
@@ -23,12 +24,13 @@ const getStudentProfile = async () => {
   });
 
   const etdObj = toRaw(etd[0]);
-  if (JSON.stringify(etdObj) !== JSON.stringify({})) {
+  console.log("?", etdObj);
+  // if (JSON.stringify(etdObj) !== JSON.stringify({})) {
+  if (etdObj) {
     etdProf.name = etdObj.name;
   }
   console.log("etdProf", etdProf);
 };
-
 
 onMounted(() => {
   getStudentProfile();

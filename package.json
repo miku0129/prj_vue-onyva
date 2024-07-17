@@ -15,7 +15,7 @@
     "bootstrap-vue-next": "^0.22.3",
     "vue": "^3.4.29",
     "vue-axios": "^3.5.2",
-    "vue-router": "^4.4.0"
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.24.8",

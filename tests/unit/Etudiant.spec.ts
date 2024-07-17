@@ -1,6 +1,7 @@
 import { mount, shallowMount, flushPromises } from "@vue/test-utils";
 import Etudiant from "../../src/components/Etudiant.vue";
 import axios from "axios";
+import { useRoute } from "vue-router";
 
 jest.mock("axios", () => ({
   get: jest.fn(() =>
@@ -35,24 +36,29 @@ describe("Etudiant", () => {
     });
     expect(wrapper.exists()).toBe(true);
   });
+
+  // jest.mock("vue-router", () => ({
+  //   useRoute: jest.fn(),
+  // }));
+  // const MockUseRoute = useRoute as jest.Mock<typeof MockUseRoute>;
+
+  it("should show an etudiant profile corresponds his/her id", async () => {
+    // MockUseRoute.mockImplementationOnce(() => ({
+    //   params: {
+    //     id: "1",
+    //   },
+    // }));
+
+    const wrapper = mount(Etudiant, {
+      global: {
+        mocks: {
+          $route: { params: { id: "1" } },
+        },
+        // stubs: ["RouterLink", "router-view"],
+      },
+    });
+
+    await flushPromises();
+    console.log(wrapper.html());
+  });
 });
-
-// describe("Etudiant", () => {
-//   it("should show an etudiant profile corresponds his/her id", async () => {
-//     const wrapper = shallowMount(Etudiant, {
-//       global: {
-//         mocks: {
-//           $route: { params: { id: "1" } },
-//         },
-//       },
-//       data() {
-//         return {
-//           routeId: "1",
-//         };
-//       },
-//     });
-
-//     await flushPromises();
-//     console.log(wrapper.html());
-//   });
-// });
