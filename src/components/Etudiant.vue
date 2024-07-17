@@ -1,9 +1,26 @@
 <script setup lang="ts">
+import { onMounted, reactive } from "vue";
 import router from "../utils/router";
-import axios from "axios";
-defineProps<{
-  etudiant: Etudiant[];
-}>();
+import { getAllEtudiants } from "../utils/helper";
+
+// import axios from "axios";
+// defineProps<{
+//   etudiant: Etudiant[];
+// }>();
+
+type DataType = { etudiants: Etudiant[] };
+let data: DataType = reactive({ etudiants: [] });
+
+const getData = async () => {
+  const { etudiant } = await getAllEtudiants();
+  data.etudiants = etudiant;
+  console.log("data", data);
+  console.log("etudiant", etudiant);
+};
+
+onMounted(() => {
+  getData();
+});
 </script>
 
 <template>
@@ -22,33 +39,35 @@ defineProps<{
             Je m'appelle
             <span>{{
               (() => {
-                const etd = etudiant.filter((etd) => {
-                  return etd.id === Number($route.params.id);
-                });
-                return etd[0].name;
+                if (JSON.stringify(data.etudiants)!==JSON.stringify([])) {
+                  const etd = data.etudiants.filter((etd) => {
+                    return etd.id === Number($route.params.id);
+                  });
+                  return etd[0].name;
+                }
               })()
             }}</span>
           </p>
         </div>
 
-        <p class="i-am">
+        <!-- <p class="i-am">
           J'étudie le français depuis
           <span>{{
             (() => {
-              const etd = etudiant.filter((etd) => {
+              const etd = data.etudiants.filter((etd) => {
                 return etd.id === Number($route.params.id);
               });
               return etd[0].fromWhen;
             })()
           }}</span>
-        </p>
+        </p> -->
       </div>
     </div>
     <div class="student-info-box-sub">
-      <p>
+      <!-- <p>
         {{
           (() => {
-            const etd = etudiant.filter((etd) => {
+            const etd = data.etudiants.filter((etd) => {
               return etd.id === Number($route.params.id);
             });
             return etd[0].myGoal;
@@ -58,13 +77,13 @@ defineProps<{
       <p>
         {{
           (() => {
-            const etd = etudiant.filter((etd) => {
+            const etd = data.etudiants.filter((etd) => {
               return etd.id === Number($route.params.id);
             });
             return etd[0].myMethod;
           })()
         }}
-      </p>
+      </p> -->
     </div>
     <div class="btn-group">
       <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">
