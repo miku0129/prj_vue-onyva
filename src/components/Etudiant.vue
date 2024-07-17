@@ -7,31 +7,49 @@ import { getAllEtudiants } from "../utils/helper";
 type DataType = { etudiants: Etudiant[] };
 let data: DataType = reactive({ etudiants: [] });
 
-const getData = async () => {
-  const { etudiant } = await getAllEtudiants();
-  data.etudiants = etudiant;
+const route = useRoute();
+const etdProf = reactive({
+  name: "",
+});
+const getStudentProfile = async () => {
+  // const { etudiant } = await getAllEtudiants();
+  console.log("??", await getAllEtudiants())
+  // data.etudiants = etudiant;
+
+  // const etd = data.etudiants.filter((etd) => {
+  //   if (route) {
+  //     return etd.id === Number(route.params.id);
+  //   }
+  // });
+  // if (JSON.stringify(etd) !== JSON.stringify([])) {
+  //   console.log("etd!", etd);
+  //   etdProf.name = etd[0].name;
+  // } else {
+  //   console.log("etd", etd);
+  // }
 };
 
-const route = useRoute();
-const getStudentProfile = (arg: string) => {
-  const etd = data.etudiants.filter((etd) => {
-    if (route) {
-      return etd.id === Number(route.params.id);
-    }
-  });
-  if (arg === "name") {
-    return etd[0].name;
-  } else if (arg === "fromWhen") {
-    return etd[0].fromWhen;
-  } else if (arg === "myGoal") {
-    return etd[0].myGoal;
-  } else if (arg === "myMethod") {
-    return etd[0].myMethod;
-  }
-};
+// const getStudentProfile = (arg: string) => {
+//   const etd = data.etudiants.filter((etd) => {
+//     if (route) {
+//       return etd.id === Number(route.params.id);
+//     }
+//   });
+//   console.log("etd", etd)
+
+//   if (arg === "name") {
+//     return etd[0].name;
+//   } else if (arg === "fromWhen") {
+//     return etd[0].fromWhen;
+//   } else if (arg === "myGoal") {
+//     return etd[0].myGoal;
+//   } else if (arg === "myMethod") {
+//     return etd[0].myMethod;
+//   }
+// };
 
 onMounted(async () => {
-  await getData();
+  await getStudentProfile();
 });
 </script>
 
@@ -49,17 +67,11 @@ onMounted(async () => {
         <div>
           <p class="i-am">
             Je m'appelle
-            <span>{{
-              (() => {
-                if (JSON.stringify(data.etudiants) !== JSON.stringify([])) {
-                  return getStudentProfile("name");
-                }
-              })()
-            }}</span>
+            <span>{{ etdProf.name }}</span>
           </p>
         </div>
 
-        <p class="i-am">
+        <!-- <p class="i-am">
           J'étudie le français depuis
           <span>{{
             (() => {
@@ -68,11 +80,11 @@ onMounted(async () => {
               }
             })()
           }}</span>
-        </p>
+        </p> -->
       </div>
     </div>
     <div class="student-info-box-sub">
-      <p>
+      <!-- <p>
         {{
           (() => {
             if (JSON.stringify(data.etudiants) !== JSON.stringify([])) {
@@ -89,7 +101,7 @@ onMounted(async () => {
             }
           })()
         }}
-      </p>
+      </p> -->
     </div>
     <div class="btn-group">
       <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">

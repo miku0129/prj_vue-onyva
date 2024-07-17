@@ -3,6 +3,7 @@ import { getAllEtudantApi } from "../assets/asset";
 
 export const getAllEtudiants = async () => {
   return await axios.get(getAllEtudantApi).then((res) => {
+    console.log("res.data", res.data)
     return res.data;
   });
 };
