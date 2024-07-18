@@ -19,7 +19,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory("https://miku0129.github.io/prj_vue-onyva/"),
+  history: createWebHashHistory("/prj_vue-onyva/"),
   routes,
 });
 
