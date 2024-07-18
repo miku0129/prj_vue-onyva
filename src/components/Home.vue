@@ -21,11 +21,6 @@ onMounted(async () => {
     <h2>{{ subTitle }}</h2>
 
     <div>
-      <RouterLink :to="'/etudiant/create'" class="link">
-        <BButton variant="outline-primary" class="global-style-btn"
-          >Ajouter un profil</BButton
-        >
-      </RouterLink>
     </div>
 
     <div class="etudiant-profiles-box">

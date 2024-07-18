@@ -1,4 +1,5 @@
 <template>
+  <p>edit</p>
   <BForm @submit="onSubmit" @reset="onReset" v-if="show" class="edit-form">
     <BFormGroup id="input-group-1" label="Nom" label-for="input-1">
       <BFormInput
@@ -57,6 +58,7 @@
       <BButton type="reset" variant="danger">Reset</BButton>
     </div>
   </BForm>
+  <EtudiantRemove />
 </template>
 
 <script setup lang="ts">
@@ -64,6 +66,7 @@ import { ref, reactive, nextTick, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import router from "../utils/router";
+import EtudiantRemove from "./EtudintRemove.vue"; 
 import { getAllEtudantApi } from "../assets/asset";
 
 const route = useRoute();

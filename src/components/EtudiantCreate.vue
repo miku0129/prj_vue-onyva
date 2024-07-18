@@ -1,4 +1,5 @@
 <template>
+  <p>create</p>
   <BForm @submit="onSubmit" @reset="onReset" v-if="show" class="edit-form">
     <BFormGroup id="input-group-1" label="Nom" label-for="input-1">
       <BFormInput

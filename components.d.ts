@@ -27,6 +27,7 @@ declare module 'vue' {
     EtudiantCreate: typeof import('./src/components/EtudiantCreate.vue')['default']
     EtudiantEdit: typeof import('./src/components/EtudiantEdit.vue')['default']
     EtudiantPreview: typeof import('./src/components/EtudiantPreview.vue')['default']
+    EtudintRemove: typeof import('./src/components/EtudintRemove.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Gallery: typeof import('./src/components/Gallery.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']

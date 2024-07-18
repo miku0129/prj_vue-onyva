@@ -9,7 +9,9 @@ export const failedMsg = "L'exécution a échoué.";
 
 export const getAllEtudantApi = "https://app.msano.ovh/www/api/etudiant";
 export const createAEtudiantApi = "https://app.msano.ovh/www/api/etudiant";
+export const removeEtudiantApi = "https://app.msano.ovh/www/api/etudiant/delete/"
 
-export const getBack = "Retour"
-export const seeProfile = "Voir profil"
-export const doLogout = "Déconnexion "
+export const getBack = "Retour";
+export const seeProfile = "Voir profil";
+export const doLogout = "Déconnexion";
+export const removeItem = "Effacer le profil"

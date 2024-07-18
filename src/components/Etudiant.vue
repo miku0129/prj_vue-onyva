@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, reactive, toRaw } from "vue";
 import { useRoute } from "vue-router";
-import router from "../utils/router";
 import { getAllEtudiants } from "../utils/helper";
 
 type DataType = { etudiants: Etudiant[] };
@@ -78,13 +77,13 @@ onMounted(() => {
         {{ etdProf.myMethod }}
       </p>
     </div>
-    <div class="btn-group">
-      <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">
+    <!-- <div class="btn-group"> -->
+      <!-- <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">
         <BButton variant="outline-primary" class="global-style-btn"
           >Edit</BButton
         >
-      </RouterLink>
-      <div>
+      </RouterLink> -->
+      <!-- <div>
         <BButton
           variant="outline-danger"
           class="global-style-btn"
@@ -102,8 +101,8 @@ onMounted(() => {
           "
           >Effacer</BButton
         >
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
   </div>
 </template>
 
