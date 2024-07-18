@@ -12,5 +12,5 @@
 * Allow user to create an account
 * Add user authentication
 * Allow user to edit it's profile
-* Implements CI/CD with Github Actions
-* Add tests for UI
+* ~~Implements CI/CD with Github Actions~~
+* ~~Add tests for UI~~

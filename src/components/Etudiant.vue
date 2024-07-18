@@ -1,9 +1,49 @@
 <script setup lang="ts">
+import { onMounted, reactive, toRaw } from "vue";
+import { useRoute } from "vue-router";
 import router from "../utils/router";
-import axios from "axios";
-defineProps<{
-  etudiant: Etudiant[];
-}>();
+import { getAllEtudiants } from "../utils/helper";
+
+type DataType = { etudiants: Etudiant[] };
+type ProfType = {
+  name: string;
+  fromWhen?: string;
+  myGoal?: string;
+  myMethod?: string;
+};
+let data: DataType = reactive({ etudiants: [] });
+
+const route = useRoute();
+const routeId = route ? route.params.id : "";
+console.log("routeid", routeId);
+const etdProf: ProfType = reactive({
+  name: "",
+  fromWhen: "",
+  myGoal: "",
+  myMethod: "",
+});
+
+const getStudentProfile = async () => {
+  const { etudiant } = await getAllEtudiants();
+  data.etudiants = etudiant;
+
+  const etd = data.etudiants.filter((etd) => {
+    const etdObj = toRaw(etd);
+    return etdObj.id === Number(routeId);
+  });
+
+  const etdObj = toRaw(etd[0]);
+  if (etdObj) {
+    etdProf.name = etdObj.name;
+    etdProf.fromWhen = etdObj.fromWhen;
+    etdProf.myGoal = etdObj.myGoal;
+    etdProf.myMethod = etdProf.myMethod;
+  }
+};
+
+onMounted(() => {
+  getStudentProfile();
+});
 </script>
 
 <template>
@@ -20,50 +60,22 @@ defineProps<{
         <div>
           <p class="i-am">
             Je m'appelle
-            <span>{{
-              (() => {
-                const etd = etudiant.filter((etd) => {
-                  return etd.id === Number($route.params.id);
-                });
-                return etd[0].name;
-              })()
-            }}</span>
+            <span class="jest-name-verify">{{ etdProf.name }}</span>
           </p>
         </div>
 
         <p class="i-am">
           J'étudie le français depuis
-          <span>{{
-            (() => {
-              const etd = etudiant.filter((etd) => {
-                return etd.id === Number($route.params.id);
-              });
-              return etd[0].fromWhen;
-            })()
-          }}</span>
+          <span>{{ etdProf.fromWhen }}</span>
         </p>
       </div>
     </div>
     <div class="student-info-box-sub">
       <p>
-        {{
-          (() => {
-            const etd = etudiant.filter((etd) => {
-              return etd.id === Number($route.params.id);
-            });
-            return etd[0].myGoal;
-          })()
-        }}
+        {{ etdProf.myGoal }}
       </p>
       <p>
-        {{
-          (() => {
-            const etd = etudiant.filter((etd) => {
-              return etd.id === Number($route.params.id);
-            });
-            return etd[0].myMethod;
-          })()
-        }}
+        {{ etdProf.myMethod }}
       </p>
     </div>
     <div class="btn-group">
