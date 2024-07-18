@@ -80,12 +80,14 @@ onMounted(() => {
     </div>
     <div class="btn-group">
       <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">
-        <BButton variant="outline-primary" class="edit-btn">Edit</BButton>
+        <BButton variant="outline-primary" class="global-style-btn"
+          >Edit</BButton
+        >
       </RouterLink>
       <div>
         <BButton
           variant="outline-danger"
-          class="edit-btn"
+          class="global-style-btn"
           @click="
             async () => {
               try {
@@ -140,10 +142,10 @@ onMounted(() => {
     max-width: 400px;
     margin: 0 auto;
   }
-  .edit-btn {
+  /* .edit-btn {
     width: fit-content;
     margin: 0 auto;
-  }
+  } */
 }
 .btn-group {
   display: flex;

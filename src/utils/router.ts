@@ -6,6 +6,7 @@ import Etudiant from "../components/Etudiant.vue";
 import EtudiantCreate from "../components/EtudiantCreate.vue";
 import EtudiantEdit from "../components/EtudiantEdit.vue";
 import AuthDashboard from "../components/AuthDashboard.vue";
+import AuthProfile from "../components/AuthProfile.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -14,7 +15,7 @@ const routes = [
   { path: "/etudiant/:id/edit", component: EtudiantEdit },
   { path: "/auth", component: AuthLogin },
   { path: "/auth/dashboard", component: AuthDashboard },
-
+  { path: "/auth/profile", component: AuthProfile },
 ];
 
 const router = createRouter({

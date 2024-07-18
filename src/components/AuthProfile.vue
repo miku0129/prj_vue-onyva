@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 import { register } from "@teamhanko/hanko-elements";
+import router from "../utils/router";
+import { getBack } from "../assets/asset";
 
 const hankoApi = import.meta.env.VITE_HANKO_API_URL_LOCAL;
 
@@ -13,5 +15,15 @@ onMounted(() => {
 </script>
 
 <template>
+  <BButton
+    variant="primary"
+    class="global-style-btn"
+    @click="
+      () => {
+        router.go(-1);
+      }
+    "
+    >{{ getBack }}</BButton
+  >
   <hanko-profile />
 </template>

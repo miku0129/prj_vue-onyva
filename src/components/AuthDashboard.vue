@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import AuthProfile from "./AuthProfile.vue";
 import AuthLogoutBtn from "./AuthLogoutBtn.vue";
+import { seeProfile } from "../assets/asset";
 </script>
 
 <template>
   <div>
-    <AuthProfile />
+    <!-- <AuthProfile /> -->
+    <RouterLink :to="'/auth/profile'" class="link">
+      <BButton variant="primary" class="global-style-btn">{{
+        seeProfile
+      }}</BButton>
+    </RouterLink>
+
     <AuthLogoutBtn />
   </div>
 </template>

@@ -22,7 +22,7 @@ onMounted(async () => {
 
     <div>
       <RouterLink :to="'/etudiant/create'" class="link">
-        <BButton variant="outline-primary" class="edit-btn"
+        <BButton variant="outline-primary" class="global-style-btn"
           >Ajouter un profil</BButton
         >
       </RouterLink>
