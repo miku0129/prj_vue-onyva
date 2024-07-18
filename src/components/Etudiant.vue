@@ -12,6 +12,9 @@ const routeId = route ? route.params.id : "";
 console.log("routeid", routeId);
 const etdProf = reactive({
   name: "",
+  fromWhen: "",
+  myGoal: "",
+  myMethod: "",
 });
 
 const getStudentProfile = async () => {
