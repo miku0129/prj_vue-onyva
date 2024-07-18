@@ -101,18 +101,18 @@ onMounted(() => {
 
 const show = ref(true);
 
-const onSubmit = async (event: Event) => {
-  event.preventDefault();
-  try {
-    await axios.put(`https://app.msano.ovh/www/api/etudiant/edit/${id}`, form);
-    alert(JSON.stringify(form));
-    router.push({ path: `/etudiant/${id}` }).then(() => {
-      router.go(0);
-    });
-  } catch (e) {
-    alert(e);
-  }
-};
+// const onSubmit = async (event: Event) => {
+//   event.preventDefault();
+  // try {
+  //   await axios.put(`https://app.msano.ovh/www/api/etudiant/edit/${id}`, form);
+  //   alert(JSON.stringify(form));
+  //   router.push({ path: `/etudiant/${id}` }).then(() => {
+  //     router.go(0);
+  //   });
+  // } catch (e) {
+  //   alert(e);
+  // }
+// };
 
 const onReset = (event: Event) => {
   event.preventDefault();
