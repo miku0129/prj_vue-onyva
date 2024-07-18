@@ -1,29 +1,25 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import samplePhotoData from "../assets/sample-photo-data.ts";
+import { useRouter } from "vue-router";
+import { onMounted } from "vue";
+import { register } from "@teamhanko/hanko-elements";
 
-const photoListInit: Photo[] = samplePhotoData();
-const photoList = ref(photoListInit);
+const hankoApi = import.meta.env.VITE_HANKO_API_URL_LOCAL;
+
+const router = useRouter();
+
+const redirectAfterLogin = () => {
+  // successfully logged in, redirect to a page in your application
+  router.push("/auth/dashboard");
+};
+
+onMounted(() => {
+  register(hankoApi).catch((error: Error) => {
+    // handle error
+    window.alert(error.message);
+  });
+});
 </script>
 
 <template>
-  <div class="photos">
-    <div v-for="photo in photoList" v-bind:key="photo.id">
-      <img :src="photo.download_url" width="300px" />
-    </div>
-  </div>
+  <hanko-auth @onAuthFlowCompleted="redirectAfterLogin" />
 </template>
-
-<style scoped>
-.photos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  img {
-    width: 200px;
-    object-fit: cover;
-    height: 200px;
-  }
-}
-</style>

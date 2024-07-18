@@ -7,7 +7,10 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AuthDashboard: typeof import('./src/components/AuthDashboard.vue')['default']
     AuthLogin: typeof import('./src/components/AuthLogin.vue')['default']
+    AuthLogoutBtn: typeof import('./src/components/AuthLogoutBtn.vue')['default']
+    AuthProfile: typeof import('./src/components/AuthProfile.vue')['default']
     BButton: typeof import('bootstrap-vue-next')['BButton']
     BCollapse: typeof import('bootstrap-vue-next')['BCollapse']
     BForm: typeof import('bootstrap-vue-next')['BForm']

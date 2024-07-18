@@ -7,7 +7,13 @@ import { BootstrapVueNextResolver } from "bootstrap-vue-next";
 export default defineConfig({
   base: "/prj_vue-onyva/",
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith("hanko-"),
+        },
+      },
+    }),
     Components({
       resolvers: [BootstrapVueNextResolver()],
     }),
