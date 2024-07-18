@@ -5,12 +5,18 @@ import router from "../utils/router";
 import { getAllEtudiants } from "../utils/helper";
 
 type DataType = { etudiants: Etudiant[] };
+type ProfType = {
+  name: string;
+  fromWhen?: string;
+  myGoal?: string;
+  myMethod?: string;
+};
 let data: DataType = reactive({ etudiants: [] });
 
 const route = useRoute();
 const routeId = route ? route.params.id : "";
 console.log("routeid", routeId);
-const etdProf = reactive({
+const etdProf: ProfType = reactive({
   name: "",
   fromWhen: "",
   myGoal: "",
