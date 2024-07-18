@@ -1,7 +1,8 @@
 {
-  "name": "prj_ufcv-vue",
+  "name": "prj_vue-onyva",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://miku0129.github.io/prj_vue-onyva/",
   "type": "module",
   "scripts": {
     "dev": "vite",
