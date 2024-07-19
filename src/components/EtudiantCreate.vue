@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { reactive } from "vue";
 import Form from "./Form.vue";
 
-const isEdit = false;
-const show = ref(true);
+const isEdit = reactive({ bool: false })
+const show = reactive({ bool: true });
 const formContent = reactive({
   id: 0,
   name: "",

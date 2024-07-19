@@ -34,7 +34,6 @@ const prefetch = async () => {
     hasAvatar.value = etdData ? true : false;
 
     if (hasAvatar.value) {
-      console.log("etdData", etdData);
       etudiant.id = etdData.id;
       etudiant.name = etdData.name;
       etudiant.email = etdData.email;

@@ -1,46 +1,51 @@
 <script setup lang="ts">
 import { toRaw, nextTick } from "vue";
+import { useRouter } from "vue-router";
 import axios from "axios";
 import { createAEtudiantApi, updateAEtudiantApi } from "../assets/asset";
 
 interface FormProps {
-  isEdit: Boolean;
-  show: Boolean;
+  isEdit: isEditVal;
+  show: showForm;
   formContent: FormContent;
 }
 const formProps = defineProps<FormProps>();
 
-console.log(formProps.formContent)
+const router = useRouter();
 
 const onSubmit = async (event: Event) => {
   event.preventDefault();
-  if (formProps.isEdit === false) {
+  if (formProps.isEdit.bool === false) {
     try {
       await axios.post(createAEtudiantApi, toRaw(formProps.formContent));
       alert("L'exécution a réussi.");
-      //   form.name = "";
-      //   form.email = "";
-      //   form.fromWhen = "";
-      //   form.myGoal = "";
-      //   form.myMethod = "";
+      formProps.formContent.name = "";
+      formProps.formContent.email = "";
+      formProps.formContent.fromWhen = "";
+      formProps.formContent.myGoal = "";
+      formProps.formContent.myMethod = "";
       // Trick to reset/clear native browser form validation state
-      //   show.value = false;
-      //   nextTick(() => {
-      // show.value = true;
-      //   });
+      formProps.show.bool = false;
+      nextTick(() => {
+        formProps.show.bool = true;
+      });
+      router.push({ path: "/" }).then(() => {
+        router.go(0);
+      });
     } catch (e) {
       alert(e);
     }
   } else {
-    console.log("event", event);
     const updateForm = toRaw(formProps.formContent);
     console.log("updateForm", updateForm);
     try {
       await axios.put(`${updateAEtudiantApi}${updateForm.id}`, updateForm);
       alert(JSON.stringify(updateForm));
-      // router.push({ path: `/etudiant/${id}` }).then(() => {
-      //   router.go(0);
-      // });
+      router
+        .push({ path: `/etudiant/${formProps.formContent.id}` })
+        .then(() => {
+          router.go(0);
+        });
     } catch (e) {
       alert(e);
     }
@@ -48,18 +53,18 @@ const onSubmit = async (event: Event) => {
 };
 
 const onReset = (event: Event) => {
-  //   event.preventDefault();
-  //   // Reset our form values
-  //   form.name = "";
-  //   form.email = "";
-  //   form.fromWhen = "";
-  //   form.myGoal = "";
-  //   form.myMethod = "";
-  //   // Trick to reset/clear native browser form validation state
-  //   show.value = false;
-  //   nextTick(() => {
-  //     show.value = true;
-  //   });
+  event.preventDefault();
+  // Reset our form values
+  formProps.formContent.name = "";
+  formProps.formContent.email = "";
+  formProps.formContent.fromWhen = "";
+  formProps.formContent.myGoal = "";
+  formProps.formContent.myMethod = "";
+  // Trick to reset/clear native browser form validation state
+  formProps.show.bool = false;
+  nextTick(() => {
+    formProps.show.bool = true;
+  });
 };
 </script>
 

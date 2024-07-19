@@ -1,18 +1,14 @@
 <script setup lang="ts">
-import { ref, reactive, nextTick, toRaw } from "vue";
-// import { useRoute } from "vue-router";
-// import axios from "axios";
-import router from "../utils/router";
+import { reactive } from "vue";
 import EtudiantRemove from "./EtudintRemove.vue";
-import Etudiant from "./Etudiant.vue";
 
 interface EtudiantProps {
   etd: Etudiant;
 }
 const props = defineProps<EtudiantProps>();
 
-const isEdit = true;
-const show = ref(true);
+const isEdit = reactive({ bool: true })
+const show = reactive({ bool: true });
 const formContent = reactive({
   id: props.etd.id, 
   name: props.etd.name,
@@ -30,6 +26,7 @@ const formContent = reactive({
     v-model:show="show"
     v-model:formContent="formContent"
   />
+  <EtudiantRemove :etudiantId="props.etd.id"/>
 </template>
 
 <style scoped>

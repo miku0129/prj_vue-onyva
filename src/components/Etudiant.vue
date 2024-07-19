@@ -14,7 +14,6 @@ let data: DataType = reactive({ etudiants: [] });
 
 const route = useRoute();
 const routeId = route ? route.params.id : "";
-console.log("routeid", routeId);
 const etdProf: ProfType = reactive({
   name: "",
   fromWhen: "",
@@ -77,32 +76,6 @@ onMounted(() => {
         {{ etdProf.myMethod }}
       </p>
     </div>
-    <!-- <div class="btn-group"> -->
-      <!-- <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">
-        <BButton variant="outline-primary" class="global-style-btn"
-          >Edit</BButton
-        >
-      </RouterLink> -->
-      <!-- <div>
-        <BButton
-          variant="outline-danger"
-          class="global-style-btn"
-          @click="
-            async () => {
-              try {
-                await axios.delete(
-                  `https://app.msano.ovh/www/api/etudiant/delete/${$route.params.id}`
-                );
-                router.go(-1);
-              } catch (e) {
-                console.log(e);
-              }
-            }
-          "
-          >Effacer</BButton
-        >
-      </div> -->
-    <!-- </div> -->
   </div>
 </template>
 
