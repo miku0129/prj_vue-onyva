@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <p>edit</p>
   <BForm @submit="onSubmit" @reset="onReset" v-if="show" class="edit-form">
     <BFormGroup id="input-group-1" label="Nom" label-for="input-1">
@@ -59,78 +59,99 @@
     </div>
   </BForm>
   <EtudiantRemove />
-</template>
+</template> -->
 
 <script setup lang="ts">
-import { ref, reactive, nextTick, onMounted } from "vue";
-import { useRoute } from "vue-router";
-import axios from "axios";
+import { ref, reactive, nextTick, toRaw } from "vue";
+// import { useRoute } from "vue-router";
+// import axios from "axios";
 import router from "../utils/router";
-import EtudiantRemove from "./EtudintRemove.vue"; 
-import { getAllEtudantApi } from "../assets/asset";
+import EtudiantRemove from "./EtudintRemove.vue";
+import Etudiant from "./Etudiant.vue";
+// import { getAllEtudantApi } from "../assets/asset";
 
-const route = useRoute();
-const id = route.params.id;
+interface EtudiantProps {
+  etd: Etudiant;
+}
+const props = defineProps<EtudiantProps>();
 
-const form = reactive({
-  name: "",
-  email: "",
-  fromWhen: "",
-  myGoal: "",
-  myMethod: "",
-});
+// const route = useRoute();
+// const id = route.params.id;
 
-const prefetch = async () => {
-  try {
-    const res = await axios.get(getAllEtudantApi);
-    const etd = res.data.etudiant.find((e: Etudiant) => e.id === Number(id));
+console.log("etd", props.etd);
+// const rawProps = toRaw(props)
+// console.log("rawProps", rawProps)
 
-    form.name = etd.name;
-    form.email = etd.email;
-    form.fromWhen = etd.fromWhen;
-    form.myGoal = etd.myGoal;
-    form.myMethod = etd.myMethod;
-  } catch (e) {
-    alert(e);
-  }
-};
-
-onMounted(() => {
-  prefetch();
-});
-
+const isEdit = true;
 const show = ref(true);
+const formContent = reactive({
+  name: props.etd.name,
+  email: props.etd.email,
+  fromWhen: props.etd.fromWhen,
+  myGoal: props.etd.myGoal,
+  myMethod: props.etd.myMethod,
+});
+console.log("formContent", formContent);
+
+// const prefetch = async () => {
+//   try {
+//     const res = await axios.get(getAllEtudantApi);
+//     const etd = res.data.etudiant.find((e: Etudiant) => e.id === Number(id));
+
+//     form.name = etd.name;
+//     form.email = etd.email;
+//     form.fromWhen = etd.fromWhen;
+//     form.myGoal = etd.myGoal;
+//     form.myMethod = etd.myMethod;
+//   } catch (e) {
+//     alert(e);
+//   }
+// };
+
+// onMounted(() => {
+//   prefetch();
+// });
 
 // const onSubmit = async (event: Event) => {
 //   event.preventDefault();
-  // try {
-  //   await axios.put(`https://app.msano.ovh/www/api/etudiant/edit/${id}`, form);
-  //   alert(JSON.stringify(form));
-  //   router.push({ path: `/etudiant/${id}` }).then(() => {
-  //     router.go(0);
-  //   });
-  // } catch (e) {
-  //   alert(e);
-  // }
+// try {
+//   await axios.put(`https://app.msano.ovh/www/api/etudiant/edit/${id}`, form);
+//   alert(JSON.stringify(form));
+//   router.push({ path: `/etudiant/${id}` }).then(() => {
+//     router.go(0);
+//   });
+// } catch (e) {
+//   alert(e);
+// }
 // };
 
-const onReset = (event: Event) => {
-  event.preventDefault();
-  // Reset our form values
-  form.name = "";
-  form.email = "";
-  form.fromWhen = "";
-  form.myGoal = "";
-  form.myMethod = "";
+// const onReset = (event: Event) => {
+//   event.preventDefault();
+//   // Reset our form values
+//   form.name = "";
+//   form.email = "";
+//   form.fromWhen = "";
+//   form.myGoal = "";
+//   form.myMethod = "";
 
-  // Trick to reset/clear native browser form validation state
-  show.value = false;
+//   // Trick to reset/clear native browser form validation state
+//   show.value = false;
 
-  nextTick(() => {
-    show.value = true;
-  });
-};
+//   nextTick(() => {
+//     show.value = true;
+//   });
+// };
 </script>
+
+<template>
+  <p>edit</p>
+  <Form
+    v-model:isEdit="isEdit"
+    v-model:show="show"
+    v-model:formContent="formContent"
+  />
+</template>
+
 <style scoped>
 .edit-form {
   padding: 20px;
