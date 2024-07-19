@@ -3,6 +3,7 @@ import { toRaw, nextTick } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 import { createAEtudiantApi, updateAEtudiantApi } from "../assets/asset";
+import { findMyEtudiant } from "../utils/helper";
 
 interface FormProps {
   isEdit: isEditVal;
@@ -29,7 +30,10 @@ const onSubmit = async (event: Event) => {
       nextTick(() => {
         formProps.show.bool = true;
       });
-      router.push({ path: "/" }).then(() => {
+
+      const myEtudiant = await findMyEtudiant();
+
+      router.push({ path: `/etudiant/${myEtudiant.id}` }).then(() => {
         router.go(0);
       });
     } catch (e) {
@@ -37,7 +41,6 @@ const onSubmit = async (event: Event) => {
     }
   } else {
     const updateForm = toRaw(formProps.formContent);
-    console.log("updateForm", updateForm);
     try {
       await axios.put(`${updateAEtudiantApi}${updateForm.id}`, updateForm);
       alert(JSON.stringify(updateForm));

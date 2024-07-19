@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, toRaw } from "vue";
-import { Hanko } from "@teamhanko/hanko-elements";
 import AuthLogoutBtn from "./AuthLogoutBtn.vue";
 import EtudiantCreate from "./EtudiantCreate.vue";
 import EtudiantEdit from "./EtudiantEdit.vue";
-import { getAllEtudiants } from "../utils/helper";
+import { findMyEtudiant } from "../utils/helper";
 import { seeProfile } from "../assets/asset";
 
 let etudiant: Etudiant = reactive({
@@ -17,20 +16,9 @@ let etudiant: Etudiant = reactive({
 });
 let hasAvatar = ref(false);
 
-const hankoApi = import.meta.env.VITE_HANKO_API_URL_LOCAL;
-const hanko = new Hanko(hankoApi);
-
 const prefetch = async () => {
-  const { id, email } = await hanko.user.getCurrent();
-  // console.log(`Hanko user-id: ${id}, email: ${email}`);
-
   try {
-    const data = await getAllEtudiants();
-
-    const etdData = data.etudiant.find((etd: Etudiant) => {
-      return etd.email === email;
-    });
-
+    const etdData = await findMyEtudiant();
     hasAvatar.value = etdData ? true : false;
 
     if (hasAvatar.value) {

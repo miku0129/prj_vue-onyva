@@ -35,7 +35,7 @@ const getStudentProfile = async () => {
     etdProf.name = etdObj.name;
     etdProf.fromWhen = etdObj.fromWhen;
     etdProf.myGoal = etdObj.myGoal;
-    etdProf.myMethod = etdProf.myMethod;
+    etdProf.myMethod = etdObj.myMethod;
   }
 };
 
