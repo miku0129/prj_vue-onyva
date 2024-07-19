@@ -3,8 +3,9 @@ import { onMounted } from "vue";
 import { register } from "@teamhanko/hanko-elements";
 import router from "../utils/router";
 import { getBack } from "../assets/asset";
+import { getHankoApi } from "../utils/helper";
 
-const hankoApi = import.meta.env.VITE_HANKO_API_URL_LOCAL;
+const hankoApi = getHankoApi();
 
 onMounted(() => {
   register(hankoApi).catch((error: Error) => {

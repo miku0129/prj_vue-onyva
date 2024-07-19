@@ -2,8 +2,11 @@
 import { useRouter } from "vue-router";
 import { onMounted } from "vue";
 import { register } from "@teamhanko/hanko-elements";
+import { getHankoApi } from "../utils/helper";
 
-const hankoApi = import.meta.env.VITE_HANKO_API_URL_LOCAL;
+const hankoApi = getHankoApi();
+console.log("hankoApi", hankoApi);
+
 
 const router = useRouter();
 

@@ -2,9 +2,15 @@ import axios from "axios";
 import { Hanko } from "@teamhanko/hanko-elements";
 import { getAllEtudantApi } from "../assets/asset";
 
+export const getHankoApi = () => {
+  return process.env.NODE_ENV === "development"
+    ? import.meta.env.VITE_HANKO_API_URL_LOCAL
+    : import.meta.env.VITE_HANKO_API_URL_PLOD;
+};
+
 export const getAllEtudiants = async () => {
   return await axios.get(getAllEtudantApi).then((res) => {
-    console.log("res", res.data)
+    console.log("res", res.data);
     return res.data;
   });
 };
@@ -18,13 +24,13 @@ export const getAllEtudiants = async () => {
 // };
 
 export const findMyEtudiant = async () => {
-  const hankoApi = import.meta.env.VITE_HANKO_API_URL_LOCAL;
+  const hankoApi = getHankoApi();
   const hanko = new Hanko(hankoApi);
   const { email } = await hanko.user.getCurrent();
+  
   const data = await getAllEtudiants();
   const etudiant = data.etudiant.find((etd: Etudiant) => {
     return etd.email === email;
   });
-  console.log("etudiant", etudiant);
   return etudiant;
 };
