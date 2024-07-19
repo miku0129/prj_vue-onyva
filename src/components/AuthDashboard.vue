@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, toRaw } from "vue";
-import axios from "axios";
 import { Hanko } from "@teamhanko/hanko-elements";
 import AuthLogoutBtn from "./AuthLogoutBtn.vue";
 import EtudiantCreate from "./EtudiantCreate.vue";
 import EtudiantEdit from "./EtudiantEdit.vue";
-import { seeProfile } from "../assets/asset";
 import { getAllEtudiants } from "../utils/helper";
+import { seeProfile } from "../assets/asset";
 
-let etd: Etudiant = reactive({
+let etudiant: Etudiant = reactive({
   id: 0,
   name: "",
   email: "",
@@ -23,30 +22,28 @@ const hanko = new Hanko(hankoApi);
 
 const prefetch = async () => {
   const { id, email } = await hanko.user.getCurrent();
-  console.log(`user-id: ${id}, email: ${email}`);
+  // console.log(`Hanko user-id: ${id}, email: ${email}`);
 
   try {
     const data = await getAllEtudiants();
 
-    const fakeEmail = "test3@email.com";
-
-    console.log("data", data);
     const etdData = data.etudiant.find((etd: Etudiant) => {
-      // console.log("etd", etd.email);
-      return etd.email === fakeEmail;
+      return etd.email === email;
     });
 
     hasAvatar.value = etdData ? true : false;
 
-    etd.id = etdData.id; 
-    etd.name = etdData.name;
-    etd.email = etdData.email;
-    etd.fromWhen = etdData.fromWhen;
-    etd.myGoal = etdData.myGoal;
-    etd.myMethod = etdData.myMethod;
+    if (hasAvatar.value) {
+      console.log("etdData", etdData);
+      etudiant.id = etdData.id;
+      etudiant.name = etdData.name;
+      etudiant.email = etdData.email;
+      etudiant.fromWhen = etdData.fromWhen;
+      etudiant.myGoal = etdData.myGoal;
+      etudiant.myMethod = etdData.myMethod;
 
-    etd = toRaw(etd)
-    console.log("etd", etd);
+      etudiant = toRaw(etudiant);
+    }
   } catch (e) {
     alert(e);
   }
@@ -65,7 +62,7 @@ onMounted(async () => {
       }}</BButton>
     </RouterLink>
     <AuthLogoutBtn />
-    <!-- <EtudiantCreate v-if="!hasAvatar" /> -->
-    <EtudiantEdit v-if="hasAvatar" :etd="etd" />
+    <EtudiantCreate v-if="!hasAvatar" />
+    <EtudiantEdit v-if="hasAvatar" :etd="etudiant" />
   </div>
 </template>

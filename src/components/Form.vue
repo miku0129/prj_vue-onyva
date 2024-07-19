@@ -10,7 +10,7 @@ interface FormProps {
 }
 const formProps = defineProps<FormProps>();
 
-console.log(formProps.isEdit);
+console.log(formProps.formContent)
 
 const onSubmit = async (event: Event) => {
   event.preventDefault();
