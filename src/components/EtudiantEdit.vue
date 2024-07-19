@@ -74,17 +74,12 @@ interface EtudiantProps {
   etd: Etudiant;
 }
 const props = defineProps<EtudiantProps>();
-
-// const route = useRoute();
-// const id = route.params.id;
-
 console.log("etd", props.etd);
-// const rawProps = toRaw(props)
-// console.log("rawProps", rawProps)
 
 const isEdit = true;
 const show = ref(true);
 const formContent = reactive({
+  id: props.etd.id, 
   name: props.etd.name,
   email: props.etd.email,
   fromWhen: props.etd.fromWhen,

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { toRaw, nextTick } from "vue";
 import axios from "axios";
-import { createAEtudiantApi } from "../assets/asset";
+import { createAEtudiantApi, updateAEtudiantApi } from "../assets/asset";
 
 interface FormProps {
   isEdit: Boolean;
@@ -10,9 +10,10 @@ interface FormProps {
 }
 const formProps = defineProps<FormProps>();
 
+console.log(formProps.isEdit);
+
 const onSubmit = async (event: Event) => {
   event.preventDefault();
-
   if (formProps.isEdit === false) {
     try {
       await axios.post(createAEtudiantApi, toRaw(formProps.formContent));
@@ -31,18 +32,18 @@ const onSubmit = async (event: Event) => {
       alert(e);
     }
   } else {
-    // try {
-    //   await axios.put(
-    //     `https://app.msano.ovh/www/api/etudiant/edit/${id}`,
-    //     form
-    //   );
-    //   alert(JSON.stringify(form));
-    //   router.push({ path: `/etudiant/${id}` }).then(() => {
-    //     router.go(0);
-    //   });
-    // } catch (e) {
-    //   alert(e);
-    // }
+    console.log("event", event);
+    const updateForm = toRaw(formProps.formContent);
+    console.log("updateForm", updateForm);
+    try {
+      await axios.put(`${updateAEtudiantApi}${updateForm.id}`, updateForm);
+      alert(JSON.stringify(updateForm));
+      // router.push({ path: `/etudiant/${id}` }).then(() => {
+      //   router.go(0);
+      // });
+    } catch (e) {
+      alert(e);
+    }
   }
 };
 

@@ -38,6 +38,7 @@ const prefetch = async () => {
 
     hasAvatar.value = etdData ? true : false;
 
+    etd.id = etdData.id; 
     etd.name = etdData.name;
     etd.email = etdData.email;
     etd.fromWhen = etdData.fromWhen;
