@@ -5,7 +5,7 @@ import { getAllEtudantApi } from "../assets/asset";
 export const getHankoApi = () => {
   return process.env.NODE_ENV === "development"
     ? import.meta.env.VITE_HANKO_API_URL_LOCAL
-    : import.meta.env.VITE_HANKO_API_URL_PLOD;
+    : import.meta.env.VITE_HANKO_API_URL_PROD;
 };
 
 export const getAllEtudiants = async () => {
@@ -25,9 +25,12 @@ export const getAllEtudiants = async () => {
 
 export const findMyEtudiant = async () => {
   const hankoApi = getHankoApi();
+  // const hankoApi = import.meta.env.VITE_HANKO_API_URL_PROD;
+
   const hanko = new Hanko(hankoApi);
   const { email } = await hanko.user.getCurrent();
-  
+
+
   const data = await getAllEtudiants();
   const etudiant = data.etudiant.find((etd: Etudiant) => {
     return etd.email === email;

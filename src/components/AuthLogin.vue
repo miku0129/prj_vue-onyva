@@ -5,8 +5,6 @@ import { register } from "@teamhanko/hanko-elements";
 import { getHankoApi } from "../utils/helper";
 
 const hankoApi = getHankoApi();
-console.log("hankoApi", hankoApi);
-
 
 const router = useRouter();
 

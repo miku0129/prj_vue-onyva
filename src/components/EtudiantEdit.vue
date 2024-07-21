@@ -7,10 +7,10 @@ interface EtudiantProps {
 }
 const props = defineProps<EtudiantProps>();
 
-const isEdit = reactive({ bool: true })
+const isEdit = reactive({ bool: true });
 const show = reactive({ bool: true });
 const formContent = reactive({
-  id: props.etd.id, 
+  id: props.etd.id,
   name: props.etd.name,
   email: props.etd.email,
   fromWhen: props.etd.fromWhen,
@@ -20,20 +20,16 @@ const formContent = reactive({
 </script>
 
 <template>
-  <p>edit</p>
   <Form
     v-model:isEdit="isEdit"
     v-model:show="show"
     v-model:formContent="formContent"
   />
-  <EtudiantRemove :etudiantId="props.etd.id"/>
+  <EtudiantRemove :etudiantId="props.etd.id" />
 </template>
 
 <style scoped>
 .edit-form {
   padding: 20px;
-}
-.btn-group {
-  margin: 10px;
 }
 </style>

@@ -5,7 +5,6 @@ import { BootstrapVueNextResolver } from "bootstrap-vue-next";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/prj_vue-onyva/",
   plugins: [
     vue({
       template: {

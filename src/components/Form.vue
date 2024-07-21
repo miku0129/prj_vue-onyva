@@ -131,3 +131,11 @@ const onReset = (event: Event) => {
     </div>
   </BForm>
 </template>
+<style>
+.btn-group {
+  display: flex;
+  margin: 20px;
+  justify-content: flex-start;
+  max-width: 30px;
+}
+</style>

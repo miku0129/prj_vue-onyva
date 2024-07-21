@@ -114,14 +114,5 @@ onMounted(() => {
     max-width: 400px;
     margin: 0 auto;
   }
-  /* .edit-btn {
-    width: fit-content;
-    margin: 0 auto;
-  } */
-}
-.btn-group {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
 }
 </style>

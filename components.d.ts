@@ -30,7 +30,6 @@ declare module 'vue' {
     EtudintRemove: typeof import('./src/components/EtudintRemove.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
     Form: typeof import('./src/components/Form.vue')['default']
-    Gallery: typeof import('./src/components/Gallery.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     Home: typeof import('./src/components/Home.vue')['default']
     RouteHome: typeof import('./src/components/RouteHome.vue')['default']

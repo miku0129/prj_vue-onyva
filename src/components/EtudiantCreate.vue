@@ -15,7 +15,6 @@ const formContent = reactive({
 </script>
 
 <template>
-  <p>create</p>
   <Form
     v-model:isEdit="isEdit"
     v-model:show="show"
@@ -26,8 +25,5 @@ const formContent = reactive({
 <style scoped>
 .edit-form {
   padding: 20px;
-}
-.btn-group {
-  margin: 10px;
 }
 </style>

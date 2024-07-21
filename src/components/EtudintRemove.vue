@@ -7,7 +7,7 @@ const router = useRouter();
 </script>
 
 <template>
-  <div>
+  <div class="remove-btn">
     <BButton
       variant="outline-danger"
       class="global-style-btn"
@@ -27,3 +27,12 @@ const router = useRouter();
     >
   </div>
 </template>
+<style>
+.remove-btn {
+  display: flex;
+  justify-content: center;
+  .global-style-btn {
+    margin-top: 0px;
+  }
+}
+</style>

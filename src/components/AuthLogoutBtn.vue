@@ -4,7 +4,7 @@ import { Hanko } from "@teamhanko/hanko-elements";
 import { getHankoApi } from "../utils/helper";
 import { doLogout } from "../assets/asset";
 
-const hankoApi = getHankoApi(); 
+const hankoApi = getHankoApi();
 const hanko = new Hanko(hankoApi);
 
 const router = useRouter();
