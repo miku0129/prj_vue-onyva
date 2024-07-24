@@ -8,7 +8,7 @@ import AuthProfile from "../components/AuthProfile.vue";
 
 const routes = [
   { path: "/", component: Home },
-  { path: "/etudiant/:id/", component: Etudiant },
+  { path: "/etudiants/:id/", component: Etudiant },
   { path: "/auth", component: AuthLogin },
   { path: "/auth/dashboard", component: AuthDashboard },
   { path: "/auth/profile", component: AuthProfile },

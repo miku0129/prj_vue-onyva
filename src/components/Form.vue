@@ -33,7 +33,7 @@ const onSubmit = async (event: Event) => {
 
       const myEtudiant = await findMyEtudiant();
 
-      router.push({ path: `/etudiant/${myEtudiant.id}` }).then(() => {
+      router.push({ path: `/etudiants/${myEtudiant.id}` }).then(() => {
         router.go(0);
       });
     } catch (e) {
@@ -45,7 +45,7 @@ const onSubmit = async (event: Event) => {
       await axios.put(`${etudiantsApi}/${updateForm.id}/edit`, updateForm);
       alert(JSON.stringify(updateForm));
       router
-        .push({ path: `/etudiant/${formProps.formContent.id}` })
+        .push({ path: `/etudiants/${formProps.formContent.id}` })
         .then(() => {
           router.go(0);
         });

@@ -12,7 +12,7 @@ const mainProps = {
 
 <template>
   <div class="etudiant-container">
-    <RouterLink :to="'/etudiant/' + etudiant.id" class="link" >
+    <RouterLink :to="'/etudiants/' + etudiant.id" class="link" >
       <BImg
         v-bind="mainProps"
         rounded="circle"
