@@ -22,8 +22,8 @@ const etdProf: ProfType = reactive({
 });
 
 const getStudentProfile = async () => {
-  const { etudiant } = await getAllEtudiants();
-  data.etudiants = etudiant;
+  const { etudiants } = await getAllEtudiants();
+  data.etudiants = etudiants;
 
   const etd = data.etudiants.filter((etd) => {
     const etdObj = toRaw(etd);

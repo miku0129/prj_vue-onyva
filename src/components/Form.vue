@@ -2,7 +2,7 @@
 import { toRaw, nextTick } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
-import { createAEtudiantApi, updateAEtudiantApi } from "../assets/asset";
+import { etudiantsApi } from "../assets/asset";
 import { findMyEtudiant } from "../utils/helper";
 
 interface FormProps {
@@ -18,7 +18,7 @@ const onSubmit = async (event: Event) => {
   event.preventDefault();
   if (formProps.isEdit.bool === false) {
     try {
-      await axios.post(createAEtudiantApi, toRaw(formProps.formContent));
+      await axios.post(etudiantsApi, toRaw(formProps.formContent));
       alert("L'exécution a réussi.");
       formProps.formContent.name = "";
       formProps.formContent.email = "";
@@ -42,7 +42,7 @@ const onSubmit = async (event: Event) => {
   } else {
     const updateForm = toRaw(formProps.formContent);
     try {
-      await axios.put(`${updateAEtudiantApi}${updateForm.id}`, updateForm);
+      await axios.put(`${etudiantsApi}/${updateForm.id}/edit`, updateForm);
       alert(JSON.stringify(updateForm));
       router
         .push({ path: `/etudiant/${formProps.formContent.id}` })

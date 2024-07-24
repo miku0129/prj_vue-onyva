@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Hanko } from "@teamhanko/hanko-elements";
-import { getAllEtudantApi } from "../assets/asset";
+import { etudiantsApi } from "../assets/asset";
 
 export const getHankoApi = () => {
   return process.env.NODE_ENV === "development"
@@ -9,7 +9,7 @@ export const getHankoApi = () => {
 };
 
 export const getAllEtudiants = async () => {
-  return await axios.get(getAllEtudantApi).then((res) => {
+  return await axios.get(etudiantsApi).then((res) => {
     console.log("res", res.data);
     return res.data;
   });
@@ -32,7 +32,7 @@ export const findMyEtudiant = async () => {
 
 
   const data = await getAllEtudiants();
-  const etudiant = data.etudiant.find((etd: Etudiant) => {
+  const etudiant = data.etudiants.find((etd: Etudiant) => {
     return etd.email === email;
   });
   return etudiant;

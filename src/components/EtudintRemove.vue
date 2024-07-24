@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { removeAEtudiantApi, removeItem } from "../assets/asset.ts";
+import { etudiantsApi, removeItem } from "../assets/asset.ts";
 
 const props = defineProps<{ etudiantId: number }>();
 const router = useRouter();
@@ -14,7 +14,7 @@ const router = useRouter();
       @click="
         async () => {
           try {
-            await axios.delete(`${removeAEtudiantApi}${props.etudiantId}`);
+            await axios.delete(`${etudiantsApi}/${props.etudiantId}/delete`);
             router.push({ path: '/' }).then(() => {
               router.go(0);
             });
