@@ -7,7 +7,7 @@ export const footerLabel = "On y va!";
 export const successedMsg = "L'exécution a réussi";
 export const failedMsg = "L'exécution a échoué.";
 
-export const etudiantsApi = "https://app.msano.ovh/www/api/etudiants";
+export const etudiantsApi = "https://onyvaapi.msano.ovh/www/api/etudiants";
 
 export const getBack = "Retour";
 export const seeProfile = "Voir profil";
