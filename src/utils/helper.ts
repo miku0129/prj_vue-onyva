@@ -3,9 +3,9 @@ import { Hanko } from "@teamhanko/hanko-elements";
 import { etudiantsApi } from "../assets/asset";
 
 export const getHankoApi = () => {
-  return process.env.NODE_ENV === "development"
-    ? process.env.VITE_HANKO_API_URL_LOCAL
-    : process.env.VITE_HANKO_API_URL_PROD;
+  return import.meta.env.NODE_ENV === "development"
+    ? import.meta.env.VITE_HANKO_API_URL_LOCAL
+    : import.meta.env.VITE_HANKO_API_URL_PROD;
 };
 
 export const getAllEtudiants = async () => {
