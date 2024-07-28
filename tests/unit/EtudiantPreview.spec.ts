@@ -1,3 +1,4 @@
+import { VueWrapper } from "@vue/test-utils";
 import { mount } from "@vue/test-utils";
 import EtudiantPreview from "../../src/components/EtudiantPreview.vue";
 import { createRouter, createWebHistory } from "vue-router";
@@ -9,8 +10,10 @@ const router = createRouter({
 });
 
 describe("EtudiantPreview", () => {
-  it("accepts props", () => {
-    const wrapper = mount(EtudiantPreview, {
+  let wrapper: VueWrapper | null = null;
+
+  beforeEach(() => {
+    wrapper = mount(EtudiantPreview, {
       global: {
         plugins: [router],
       },
@@ -22,35 +25,33 @@ describe("EtudiantPreview", () => {
         },
       },
     });
-    const etudiantContainer = wrapper.findComponent({
-      ref: "jest-router-verify",
-    });
-    expect(etudiantContainer.props().to).toBe("/etudiants/1");
+  });
+  afterAll(() => {
+    wrapper = null;
+  });
+
+  it("accepts props", () => {
+    if (wrapper !== null) {
+      const etudiantContainer = wrapper.findComponent({
+        ref: "jest-router-verify",
+      });
+      expect(etudiantContainer.props().to).toBe("/etudiants/1");
+    }
   });
 
   it("updates props", async () => {
-    const wrapper = mount(EtudiantPreview, {
-      global: {
-        plugins: [router],
-      },
-      props: {
+    if (wrapper !== null) {
+      await wrapper.setProps({
         etudiant: {
-          id: 1,
+          id: 2,
           email: "hoge@gmail.com",
           name: "hoge",
         },
-      },
-    });
-    await wrapper.setProps({
-      etudiant: {
-        id: 2,
-        email: "hoge@gmail.com",
-        name: "hoge",
-      },
-    });
-    const etudiantContainer = wrapper.findComponent({
-      ref: "jest-router-verify",
-    });
-    expect(etudiantContainer.props().to).toBe("/etudiants/2");
+      });
+      const etudiantContainer = wrapper.findComponent({
+        ref: "jest-router-verify",
+      });
+      expect(etudiantContainer.props().to).toBe("/etudiants/2");
+    }
   });
 });
