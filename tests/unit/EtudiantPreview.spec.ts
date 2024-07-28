@@ -27,4 +27,30 @@ describe("EtudiantPreview", () => {
     });
     expect(etudiantContainer.props().to).toBe("/etudiants/1");
   });
+
+  it("updates props", async () => {
+    const wrapper = mount(EtudiantPreview, {
+      global: {
+        plugins: [router],
+      },
+      props: {
+        etudiant: {
+          id: 1,
+          email: "hoge@gmail.com",
+          name: "hoge",
+        },
+      },
+    });
+    await wrapper.setProps({
+      etudiant: {
+        id: 2,
+        email: "hoge@gmail.com",
+        name: "hoge",
+      },
+    });
+    const etudiantContainer = wrapper.findComponent({
+      ref: "jest-router-verify",
+    });
+    expect(etudiantContainer.props().to).toBe("/etudiants/2");
+  });
 });
