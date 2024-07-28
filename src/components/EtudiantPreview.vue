@@ -12,7 +12,11 @@ const mainProps = {
 
 <template>
   <div class="etudiant-container">
-    <RouterLink :to="'/etudiants/' + etudiant.id" class="link" >
+    <RouterLink
+      :to="'/etudiants/' + etudiant.id"
+      class="link"
+      ref="jest-router-verify"
+    >
       <BImg
         v-bind="mainProps"
         rounded="circle"

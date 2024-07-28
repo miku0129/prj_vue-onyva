@@ -1,7 +1,5 @@
 import { mount, shallowMount, flushPromises } from "@vue/test-utils";
 import Etudiant from "../../src/components/Etudiant.vue";
-// import axios from "axios";
-// import { useRouter, useRoute } from "vue-router";
 import { createRouterMock, injectRouterMock } from "vue-router-mock";
 
 jest.mock("axios", () => ({
