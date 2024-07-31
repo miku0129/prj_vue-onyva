@@ -11,15 +11,15 @@ jest.mock("../../src/utils/helper", () => ({
 }));
 
 describe("AuthDashboard", () => {
-  it("shows delete button if 'etudiant' exists", async () => {
+    it("has name of the etudiant if he/she exists", async () => {
+      const wrapper = mount(AuthDashboard);
+      await flushPromises();
+      expect(wrapper.html()).toContain("mockEtd");
+    });
+
+  it("has delete button if 'etudiant' exists", async () => {
     const wrapper = mount(AuthDashboard);
     await flushPromises();
     expect(wrapper.html()).toContain("Effacer le profil");
-  });
-
-  it("shows data of the etudiant if he/she exists", async () => {
-    const wrapper = mount(AuthDashboard);
-    await flushPromises();
-    expect(wrapper.html()).toContain("mockEtd");
   });
 });
