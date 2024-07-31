@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import EtudiantRemove from "./EtudintRemove.vue";
+import Form from "./Form.vue";
 
 interface EtudiantProps {
   etd: Etudiant;

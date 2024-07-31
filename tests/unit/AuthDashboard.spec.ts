@@ -7,13 +7,19 @@ jest.mock("../../src/utils/helper", () => ({
     name: "mockEtd",
     email: "mock@mail.com",
   })),
-  getHankoApi: jest.fn()
+  getHankoApi: jest.fn(),
 }));
 
 describe("AuthDashboard", () => {
-  it("show delete button if 'etudiant' exists", async () => {
+  it("shows delete button if 'etudiant' exists", async () => {
     const wrapper = mount(AuthDashboard);
     await flushPromises();
     expect(wrapper.html()).toContain("Effacer le profil");
+  });
+
+  it("shows data of the etudiant if he/she exists", async () => {
+    const wrapper = mount(AuthDashboard);
+    await flushPromises();
+    expect(wrapper.html()).toContain("mockEtd");
   });
 });

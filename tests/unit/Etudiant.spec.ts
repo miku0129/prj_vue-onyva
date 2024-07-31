@@ -57,18 +57,4 @@ describe("Etudiant", () => {
     await flushPromises();
     expect(wrapper.find('[class="jest-name-verify"]').text()).toBe("hoge");
   });
-
-  // it("should show an etudiant profile corresponds his/her id", async () => {
-  //   router.currentRoute.value.params = {id : "1"}
-  //   const wrapper = mount(Etudiant, {
-  //     global: {
-  //       mocks: {
-  //         $route: { params: { id: "1" } },
-  //       },
-  //       plugins:[router]
-  //     },
-  //   });
-  //   await flushPromises();
-  //   console.log(wrapper.html());
-  // });
 });
