@@ -3,7 +3,7 @@ import { Hanko } from "@teamhanko/hanko-elements";
 import { etudiantsApi } from "../assets/asset";
 
 export const getHankoApi = () => {
-  return import.meta.env.NODE_ENV === "development"
+  return import.meta.env.DEV === true
     ? import.meta.env.VITE_HANKO_API_URL_LOCAL
     : import.meta.env.VITE_HANKO_API_URL_PROD;
 };

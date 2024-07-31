@@ -5,7 +5,7 @@
   "homepage": "https://miku0129.github.io/prj_vue-onyva/",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "NODE_ENV=development vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
     "test:unit": "jest"
