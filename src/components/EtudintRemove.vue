@@ -20,7 +20,7 @@ const onDelete = async () => {
 
 <template>
   <div class="remove-btn">
-    <BButton variant="outline-danger" class="global-style-btn" @click="onDelete">
+    <BButton variant="outline-danger" class="global-style-btn jest-remove-verify" @click="onDelete">
       {{ removeItem }}
     </BButton>
   </div>

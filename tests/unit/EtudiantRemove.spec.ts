@@ -12,7 +12,7 @@ describe("EtudiantRemove", () => {
       },
     });
 
-    await wrapper.find('[class="global-style-btn"]').trigger("click");
+    await wrapper.find('[class="global-style-btn jest-remove-verify"]').trigger("click");
     expect(axios.delete).toHaveBeenCalledTimes(1);
   });
 });
