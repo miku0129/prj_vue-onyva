@@ -12,4 +12,4 @@ import "./style.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue-next/dist/bootstrap-vue-next.css";
 
-createApp(App).use(router).use(createBootstrap).use(VueAxios, axios).mount("#app");
+createApp(App).use(router).use(createBootstrap()).use(VueAxios, axios).mount("#app");
