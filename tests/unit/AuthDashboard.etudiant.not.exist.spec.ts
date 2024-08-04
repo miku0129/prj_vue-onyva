@@ -1,5 +1,6 @@
 import { mount, flushPromises, VueWrapper } from "@vue/test-utils";
 import AuthDashboard from "../../src/components/AuthDashboard.vue";
+import { findMyEtudiant } from "../../src/utils/helper";
 
 jest.mock("../../src/utils/helper", () => ({
   findMyEtudiant: jest.fn(() => undefined),
@@ -15,6 +16,10 @@ describe("If 'etudiant' doesn't exist, AuthDashboard", () => {
   });
   afterAll(() => {
     wrapper = null;
+  });
+
+  it("calls findMyEtudiant", () => {
+    expect(findMyEtudiant).toHaveBeenCalledTimes(1);
   });
 
   it("has blank in name-input", () => {
