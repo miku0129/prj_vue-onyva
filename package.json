@@ -7,7 +7,9 @@
     "dev": "NODE_ENV=development vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-    "test:unit": "jest"
+    "test:unit": "jest", 
+    "test:coverage": "jest --collectCoverage"
+
   },
   "dependencies": {
     "@teamhanko/hanko-elements": "^0.12.0",

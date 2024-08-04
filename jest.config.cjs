@@ -15,6 +15,5 @@ module.exports = {
   },
   setupFilesAfterEnv: ["./tests/router-mock-setup.js"],
   transformIgnorePatterns: ["<rootDir>/node_modules/(?!@teamhanko)"],
-  collectCoverage: true,
   collectCoverageFrom: ["**/*.{ts,vue}", "!**/node_modules/**"],
 };
