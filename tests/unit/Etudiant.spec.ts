@@ -31,6 +31,7 @@ describe("Etudiant", () => {
     // properly and give you access to test specific functions
     injectRouterMock(router);
   });
+  
   it("is a Vue instance", () => {
     const wrapper = shallowMount(Etudiant, {
       global: {
