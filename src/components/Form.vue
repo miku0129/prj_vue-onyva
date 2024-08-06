@@ -20,11 +20,6 @@ const onSubmit = async (event: Event) => {
     try {
       await axios.post(etudiantsApi, toRaw(formProps.formContent));
       alert("L'exécution a réussi.");
-      formProps.formContent.name = "";
-      formProps.formContent.email = "";
-      formProps.formContent.fromWhen = "";
-      formProps.formContent.myGoal = "";
-      formProps.formContent.myMethod = "";
       // Trick to reset/clear native browser form validation state
       formProps.show.bool = false;
       nextTick(() => {
@@ -44,6 +39,12 @@ const onSubmit = async (event: Event) => {
     try {
       await axios.put(`${etudiantsApi}/${updateForm.id}/edit`, updateForm);
       alert(JSON.stringify(updateForm));
+      // Trick to reset/clear native browser form validation state
+      formProps.show.bool = false;
+      nextTick(() => {
+        formProps.show.bool = true;
+      });
+
       router
         .push({ path: `/etudiants/${formProps.formContent.id}` })
         .then(() => {

@@ -55,8 +55,8 @@ describe("Form", () => {
         show: { bool: true },
         formContent: {
           id: 99,
-          name: "mockName",
-          email: "mock@mail.com",
+          name: "mockPost",
+          email: "mockPost@mail.com",
         },
       },
     });
@@ -64,8 +64,12 @@ describe("Form", () => {
     if (wrapper) {
       await wrapper.find("bform").trigger("submit"); //フォームのsubmitを直接作動させる
       expect(axios.post).toHaveBeenCalledTimes(1);
-      // expect(axios.post).toHaveBeenCalledWith(etudiantsApi)
       expect(axios.put).not.toHaveBeenCalledTimes(1);
+      expect(axios.post).toHaveBeenCalledWith(etudiantsApi, {
+        id: 99,
+        name: "mockPost",
+        email: "mockPost@mail.com",
+      });
     }
   });
 
@@ -76,8 +80,8 @@ describe("Form", () => {
         show: { bool: true },
         formContent: {
           id: 99,
-          name: "mockName",
-          email: "mock@mail.com",
+          name: "mockPut",
+          email: "mockPut@mail.com",
         },
       },
     });
@@ -86,6 +90,12 @@ describe("Form", () => {
       await wrapper.find("bform").trigger("submit"); //フォームのsubmitを直接作動させる
       expect(axios.post).not.toHaveBeenCalledTimes(1);
       expect(axios.put).toHaveBeenCalledTimes(1);
+      expect(axios.put).toHaveBeenCalledWith(`${etudiantsApi}/99/edit`, {
+        id: 99,
+        name: "mockPut",
+        email: "mockPut@mail.com",
+      });
+
     }
   });
 });
