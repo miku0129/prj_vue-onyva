@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { title, navHome, navGallery } from "../assets/asset";
+import { title, navHome, navLogin } from "../assets/asset";
 </script>
 
 <template>
@@ -7,11 +7,8 @@ import { title, navHome, navGallery } from "../assets/asset";
     <BNavbar toggleable="lg" variant="primary" v-b-color-mode="'dark'">
       <BNavbarBrand
         ><RouterLink to="/" class="header-title"
-          >{{ title }}
-      <img src="../../public/favicon-32x32.png"/>
-          </RouterLink
-        ></BNavbarBrand
-      >
+          >{{ title }} <img src="../../public/favicon-32x32.png" /> </RouterLink
+      ></BNavbarBrand>
       <BNavbarToggle target="nav-collapse" />
       <BCollapse id="nav-collapse" is-nav>
         <BNavbarNav>
@@ -19,7 +16,7 @@ import { title, navHome, navGallery } from "../assets/asset";
             ><RouterLink to="/">{{ navHome }}</RouterLink></BNavItem
           >
           <BNavItem
-            ><RouterLink to="/gallery">{{ navGallery }}</RouterLink></BNavItem
+            ><RouterLink to="/auth">{{ navLogin }}</RouterLink></BNavItem
           >
         </BNavbarNav>
       </BCollapse>

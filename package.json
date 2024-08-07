@@ -2,15 +2,17 @@
   "name": "prj_vue-onyva",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://miku0129.github.io/prj_vue-onyva/",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "NODE_ENV=development vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-    "test:unit": "jest"
+    "test:unit": "jest", 
+    "test:cover": "jest --collectCoverage"
+
   },
   "dependencies": {
+    "@teamhanko/hanko-elements": "^0.12.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "bootstrap-vue-next": "^0.22.3",

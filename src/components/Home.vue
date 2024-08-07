@@ -1,33 +1,20 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import axios from "axios";
 import EtudiantPreview from "./EtudiantPreview.vue";
-import { subTitle, getAllEtudantApi } from "../assets/asset.ts";
+import { getAllEtudiants } from "../utils/helper.ts";
+import { subTitle } from "../assets/asset.ts";
 
 const etudiants = ref();
-const getEtudiants = () => {
-  axios.get(`${getAllEtudantApi}`).then((res) => {
-    etudiants.value = res.data.etudiant;
-  });
-};
 //DOM読み込み後に展開する
 onMounted(async () => {
-  await getEtudiants();
+  const etudiantsData = await getAllEtudiants();
+  etudiants.value = etudiantsData.etudiants;
 });
 </script>
 
 <template>
   <div class="etudiant-profiles-container container-style">
     <h2>{{ subTitle }}</h2>
-
-    <div>
-      <RouterLink :to="'/etudiant/create'" class="link">
-        <BButton variant="outline-primary" class="edit-btn"
-          >Ajouter un profil</BButton
-        >
-      </RouterLink>
-    </div>
-
     <div class="etudiant-profiles-box">
       <div v-for="etudiant in etudiants" v-bind:key="etudiant.id">
         <EtudiantPreview :etudiant="etudiant" />

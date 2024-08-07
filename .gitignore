@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 
 sample-student-data.ts
+.env
+coverage

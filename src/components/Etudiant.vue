@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, reactive, toRaw } from "vue";
 import { useRoute } from "vue-router";
-import router from "../utils/router";
 import { getAllEtudiants } from "../utils/helper";
 
 type DataType = { etudiants: Etudiant[] };
@@ -15,7 +14,6 @@ let data: DataType = reactive({ etudiants: [] });
 
 const route = useRoute();
 const routeId = route ? route.params.id : "";
-console.log("routeid", routeId);
 const etdProf: ProfType = reactive({
   name: "",
   fromWhen: "",
@@ -24,8 +22,8 @@ const etdProf: ProfType = reactive({
 });
 
 const getStudentProfile = async () => {
-  const { etudiant } = await getAllEtudiants();
-  data.etudiants = etudiant;
+  const { etudiants } = await getAllEtudiants();
+  data.etudiants = etudiants;
 
   const etd = data.etudiants.filter((etd) => {
     const etdObj = toRaw(etd);
@@ -37,7 +35,7 @@ const getStudentProfile = async () => {
     etdProf.name = etdObj.name;
     etdProf.fromWhen = etdObj.fromWhen;
     etdProf.myGoal = etdObj.myGoal;
-    etdProf.myMethod = etdProf.myMethod;
+    etdProf.myMethod = etdObj.myMethod;
   }
 };
 
@@ -78,30 +76,6 @@ onMounted(() => {
         {{ etdProf.myMethod }}
       </p>
     </div>
-    <div class="btn-group">
-      <RouterLink :to="'/etudiant/' + $route.params.id + '/edit'" class="link">
-        <BButton variant="outline-primary" class="edit-btn">Edit</BButton>
-      </RouterLink>
-      <div>
-        <BButton
-          variant="outline-danger"
-          class="edit-btn"
-          @click="
-            async () => {
-              try {
-                await axios.delete(
-                  `https://app.msano.ovh/www/api/etudiant/delete/${$route.params.id}`
-                );
-                router.go(-1);
-              } catch (e) {
-                console.log(e);
-              }
-            }
-          "
-          >Effacer</BButton
-        >
-      </div>
-    </div>
   </div>
 </template>
 
@@ -140,14 +114,5 @@ onMounted(() => {
     max-width: 400px;
     margin: 0 auto;
   }
-  .edit-btn {
-    width: fit-content;
-    margin: 0 auto;
-  }
-}
-.btn-group {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
 }
 </style>

@@ -1,23 +1,21 @@
 import { mount, shallowMount, flushPromises } from "@vue/test-utils";
 import Etudiant from "../../src/components/Etudiant.vue";
-// import axios from "axios";
-// import { useRouter, useRoute } from "vue-router";
 import { createRouterMock, injectRouterMock } from "vue-router-mock";
 
 jest.mock("axios", () => ({
   get: jest.fn(() =>
     Promise.resolve({
       data: {
-        etudiant: [
+        etudiants: [
           {
             created_at: "2024-07-10T14:02:47.000000Z",
-            email: "anwal@email.com",
+            email: "hoge@gmail.com",
             fromWhen: "2021",
             id: 1,
             myGoal:
               "Apprendre le français permet de voyager plus facilement en France et dans les pays francophones. Vous pourrez communiquer avec les habitants, comprendre les panneaux et les menus, et ainsi profiter pleinement de votre expérience de voyage. Cela vous ouvrira également des portes vers de nouvelles cultures et traditions.",
             myMethod: "Duolinog",
-            name: "Anwal",
+            name: "hoge",
             updated_at: "2024-07-11T05:10:01.000000Z",
           },
         ],
@@ -33,6 +31,7 @@ describe("Etudiant", () => {
     // properly and give you access to test specific functions
     injectRouterMock(router);
   });
+  
   it("is a Vue instance", () => {
     const wrapper = shallowMount(Etudiant, {
       global: {
@@ -57,20 +56,6 @@ describe("Etudiant", () => {
       },
     });
     await flushPromises();
-    expect(wrapper.find('[class="jest-name-verify"]').text()).toBe("Anwal");
+    expect(wrapper.find('[class="jest-name-verify"]').text()).toBe("hoge");
   });
-
-  // it("should show an etudiant profile corresponds his/her id", async () => {
-  //   router.currentRoute.value.params = {id : "1"}
-  //   const wrapper = mount(Etudiant, {
-  //     global: {
-  //       mocks: {
-  //         $route: { params: { id: "1" } },
-  //       },
-  //       plugins:[router]
-  //     },
-  //   });
-  //   await flushPromises();
-  //   console.log(wrapper.html());
-  // });
 });

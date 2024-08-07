@@ -1,22 +1,24 @@
 import { createWebHashHistory, createRouter } from "vue-router";
 
 import Home from "../components/Home.vue";
-import Gallery from "../components/Gallery.vue";
+import AuthLogin from "../components/AuthLogin.vue";
 import Etudiant from "../components/Etudiant.vue";
-import EtudiantCreate from "../components/EtudiantCreate.vue";
-import EtudiantEdit from "../components/EtudiantEdit.vue";
+import AuthDashboard from "../components/AuthDashboard.vue";
+import AuthProfile from "../components/AuthProfile.vue";
 
 const routes = [
   { path: "/", component: Home },
-  { path: "/gallery/", component: Gallery },
-  { path: "/etudiant/create/", component: EtudiantCreate },
-  { path: "/etudiant/:id/", component: Etudiant },
-  { path: "/etudiant/:id/edit", component: EtudiantEdit },
+  { path: "/etudiants/:id/", component: Etudiant },
+  { path: "/auth", component: AuthLogin },
+  { path: "/auth/dashboard", component: AuthDashboard },
+  { path: "/auth/profile", component: AuthProfile },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
+
+export { routes };
 
 export default router;

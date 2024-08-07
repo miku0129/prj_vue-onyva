@@ -7,6 +7,10 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AuthDashboard: typeof import('./src/components/AuthDashboard.vue')['default']
+    AuthLogin: typeof import('./src/components/AuthLogin.vue')['default']
+    AuthLogoutBtn: typeof import('./src/components/AuthLogoutBtn.vue')['default']
+    AuthProfile: typeof import('./src/components/AuthProfile.vue')['default']
     BButton: typeof import('bootstrap-vue-next')['BButton']
     BCollapse: typeof import('bootstrap-vue-next')['BCollapse']
     BForm: typeof import('bootstrap-vue-next')['BForm']
@@ -23,8 +27,9 @@ declare module 'vue' {
     EtudiantCreate: typeof import('./src/components/EtudiantCreate.vue')['default']
     EtudiantEdit: typeof import('./src/components/EtudiantEdit.vue')['default']
     EtudiantPreview: typeof import('./src/components/EtudiantPreview.vue')['default']
+    EtudintRemove: typeof import('./src/components/EtudintRemove.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
-    Gallery: typeof import('./src/components/Gallery.vue')['default']
+    Form: typeof import('./src/components/Form.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
     Home: typeof import('./src/components/Home.vue')['default']
     RouteHome: typeof import('./src/components/RouteHome.vue')['default']

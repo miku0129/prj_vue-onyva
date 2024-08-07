@@ -1,11 +1,15 @@
-export const title = "On y va!"
-export const subTitle = "Découvrir des personnes qui étudient le français"
-export const navHome = "Accueil"
-export const navGallery = "Gallery"
-export const footerLabel = "On y va!"
+export const title = "On y va!";
+export const subTitle = "Découvrir des personnes qui étudient le français";
+export const navHome = "Accueil";
+export const navLogin = "se connecter";
+export const footerLabel = "On y va!";
 
-export const successedMsg = "L'exécution a réussi"
-export const failedMsg = "L'exécution a échoué."
+export const successedMsg = "L'exécution a réussi";
+export const failedMsg = "L'exécution a échoué.";
 
-export const getAllEtudantApi = "https://app.msano.ovh/www/api/etudiant"
-export const createAEtudiantApi = "https://app.msano.ovh/www/api/etudiant";
+export const etudiantsApi = "https://onyvaapi.msano.ovh/www/api/etudiants";
+
+export const getBack = "Retour";
+export const seeProfile = "Voir profil";
+export const doLogout = "Déconnexion";
+export const removeItem = "Effacer le profil"

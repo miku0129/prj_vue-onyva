@@ -1,13 +1,17 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import Components from "unplugin-vue-components/vite";
 import { BootstrapVueNextResolver } from "bootstrap-vue-next";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base: "/prj_vue-onyva/",
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith("hanko-"),
+        },
+      },
+    }),
     Components({
       resolvers: [BootstrapVueNextResolver()],
     }),
