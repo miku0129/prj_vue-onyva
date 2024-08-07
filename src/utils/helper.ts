@@ -25,7 +25,6 @@ export const getAllEtudiants = async () => {
 
 export const findMyEtudiant = async () => {
   const hankoApi = getHankoApi();
-  // const hankoApi = import.meta.env.VITE_HANKO_API_URL_PROD;
 
   const hanko = new Hanko(hankoApi);
   const { email } = await hanko.user.getCurrent();
