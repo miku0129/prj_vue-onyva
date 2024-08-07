@@ -37,14 +37,14 @@ jest.mock("@teamhanko/hanko-elements", () => {
 });
 
 describe("getAllEtudiants", () => {
-  it("can get all registered etudiants", async () => {
+  it("returns all registered etudiants", async () => {
     const result = await getAllEtudiants();
     expect(result.etudiants.length).toBe(3);
   });
 });
 
 describe("findMyEtudiant", () => {
-  it("return an etudiants who represent the loggin user", async () => {
+  it("returns an etudiant who represent the login user", async () => {
     const result = await findMyEtudiant();
     expect(result.name).toBe("hoge");
   });
